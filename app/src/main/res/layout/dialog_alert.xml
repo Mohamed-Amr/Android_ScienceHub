@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_gravity="center"
+	android:layout_margin="10dp"
+	android:background="@color/white"
+	android:elevation="8dp"
+	android:gravity="center_vertical"
+	app:cardBackgroundColor="@color/white"
+	app:cardCornerRadius="2dp">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+		<TextView
+			android:id="@+id/txt_dialog_message_popup2"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/white"
+			android:gravity="top|start"
+			android:isScrollContainer="true"
+			android:padding="8dp"
+			android:text="@string/label_confirmation"
+			android:textColor="@color/carbon"
+			android:textColorLink="@android:color/background_dark"
+			android:textSize="16sp" />
+
+		<TextView
+			android:id="@+id/txt_dialog_message_popup"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@android:color/background_light"
+			android:gravity="top|left"
+			android:isScrollContainer="true"
+			android:padding="12dp"
+			android:text="You are about to place a service request. Proceed?"
+			android:textColor="@color/carbon" />
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:layout_marginRight="12dp"
+			android:layout_marginLeft="12dp"
+			android:background="@color/wedel_gray_lite"/>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:weightSum="2">
+
+			<Button
+				android:id="@+id/btn_dialog_message_popup_cancel"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@color/transparent"
+				android:gravity="center"
+				android:text="@string/cancel_request"
+				android:textAllCaps="false"
+				android:textColor="@color/red" />
+
+			<Button
+				android:id="@+id/btn_dialog_message_popup_ok"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:background="@color/transparent"
+				android:gravity="center"
+				android:text="@string/place_request"
+				android:textAllCaps="false"
+				android:textColor="@color/colorAccent" />
+		</LinearLayout>
+	</LinearLayout>
+</android.support.v7.widget.CardView>

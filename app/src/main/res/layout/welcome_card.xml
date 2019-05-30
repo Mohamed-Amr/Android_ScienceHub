@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/welcomeCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    android:elevation="1dp"
+    android:layout_margin="4dp"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="8dp">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <eg.mimocodes.sciencehub.widgets.CustomTextView
+        android:id="@+id/txt_welcome_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:textColor="@color/colorPrimary"
+        android:text="@string/label_welcome_back"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_user_name"
+        android:layout_toRightOf="@id/txt_welcome_back"
+        android:layout_alignBaseline="@id/txt_welcome_back"
+        android:hint="@string/hint_username"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="16sp"/>
+
+
+</RelativeLayout>
+
+
+        <eg.mimocodes.sciencehub.widgets.CustomTextView
+            android:id="@+id/txt_welcome_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:textColor="@color/black_666"
+            android:text="Wanna request a new wedel?"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_gravity="right|center_horizontal"
+            android:id="@+id/add_button"
+            android:onClick="onAddWedelClick"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textColor="@color/green"
+            android:textSize="16sp"
+            android:background="@color/transparent"
+            android:text="Yes"/>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

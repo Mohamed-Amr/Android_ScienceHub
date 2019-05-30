@@ -1,0 +1,62 @@
+# Default
+*.iml
+/build
+/captures
+.externalNativeBuild
+
+# IDel project uploaded at initial commit for Wedel
+./IDel
+.IDel
+IDel
+
+# Built application files
+/*/build/
+
+# Java class files
+*.class
+
+# Crashlytics configuations
+com_crashlytics_export_strings.xml
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Gradle generated files
+.gradle/
+
+# Signing files
+.signing/
+
+# generated files
+bin/
+gen/
+
+# User-specific configurations
+.idea/libraries/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/.name
+.idea/compiler.xml
+.idea/copyright/profiles_settings.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes/scope_settings.xml
+.idea/vcs.xml
+*.iml
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex

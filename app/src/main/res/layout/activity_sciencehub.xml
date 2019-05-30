@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_trips"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="eg.mimocodes.sciencehub.activity.ScienceHubActivity">
+
+    <eg.mimocodes.sciencehub.advancedwebview.AdvancedWebView
+        android:id="@+id/sciencehubview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </eg.mimocodes.sciencehub.advancedwebview.AdvancedWebView>
+
+    <LinearLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:background="@color/colorPrimary"
+        android:divider="@color/bg_feedback"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sciencehubview"
+        app:layout_constraintVertical_bias="1.0">
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/bg_feedback"
+            android:contentDescription="@string/home"
+            android:onClick="onSciencehubFeedsClick"
+            app:srcCompat="@drawable/sh_icon_small" />
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:contentDescription="@string/pub_area"
+            android:onClick="onSciencehubPubsClick"
+            app:srcCompat="@drawable/pub_small" />
+
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:contentDescription="@string/res_groups"
+            android:onClick="onSciencehubGroupsClick"
+            app:srcCompat="@drawable/group_small" />
+
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:contentDescription="@string/tech_pages"
+            android:onClick="onSciencehubPagesClick"
+            app:srcCompat="@drawable/page_small" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/drawer_width"
+    android:layout_height="match_parent"
+    android:background="@color/wedel_gray_lite"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="8dp">
+
+            <RelativeLayout
+                android:layout_width="96dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="48dp"
+                android:background="@color/transparent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_drawer_profile_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/avatar_2"/>
+
+                <ImageView
+                    android:contentDescription="@string/account_profile_photo"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignRight="@+id/iv_drawer_profile_photo"
+                    android:layout_alignEnd="@+id/iv_drawer_profile_photo"
+                    android:layout_alignTop="@+id/iv_drawer_profile_photo"
+                    android:onClick="onEditClick"
+                    android:background="@color/transparent"
+                    android:src="@drawable/ic_edit_button"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <eg.mimocodes.sciencehub.widgets.CustomTextView
+                    android:id="@+id/txt_drawer_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_username"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    />
+
+                <eg.mimocodes.sciencehub.widgets.CustomTextView
+                    android:id="@+id/txt_drawer_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                   android:gravity="center"
+                    android:hint="@string/sample_email"
+                    android:textColor="@color/white"
+                    android:textColorHint="#b1bcbf"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:onClick="onFeedsClick"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:contentDescription="@string/profile_icon"
+                        android:src="@drawable/sciencehub_icon" />
+
+                    <eg.mimocodes.sciencehub.widgets.CustomTextView
+                        android:id="@+id/txt_feeds"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:text="@string/home"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:onClick="onProfileClick"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:contentDescription="@string/profile_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_person_blue_24dp"
+                        android:backgroundTint="@color/colorPrimary"/>
+
+                    <eg.mimocodes.sciencehub.widgets.CustomTextView
+                        android:id="@+id/txt_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:text="@string/profile"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:onClick="onGroupsClick"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:contentDescription="archive_icon"
+                        android:src="@drawable/group" />
+
+                    <eg.mimocodes.sciencehub.widgets.CustomTextView
+                        android:id="@+id/txt_res_groups"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:text="@string/res_groups"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_margin="8dp"
+                    android:onClick="onTechPagesClick"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="31dp"
+                        android:layout_height="31dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="archive_icon"
+                        android:src="@drawable/tech" />
+
+                    <eg.mimocodes.sciencehub.widgets.CustomTextView
+                        android:id="@+id/txt_tech_pages"
+                        android:layout_width="172dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/tech_pages"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+
+
+                <!--<LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="?selectableItemBackground"
+                    android:onClick="onFreeRidesClick"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_free_rides_nav_drawer"/>
+
+                    <eg.mimocodes.sciencehub.widgets.CustomTextView
+                        android:id="@+id/txt_free_rides"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:text="@string/free_rides"
+                        android:textColor="#9eadb1"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="29dp"
+                    android:layout_margin="8dp"
+                    android:onClick="onPublicationsClick"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:contentDescription="promotion_icon"
+                        android:src="@drawable/publication" />
+
+                    <eg.mimocodes.sciencehub.widgets.CustomTextView
+                        android:id="@+id/txt_publications"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="@string/pub_area"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:onClick="onLogoutClick"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_power_settings_new_black_24dp" />
+
+                    <eg.mimocodes.sciencehub.widgets.CustomTextView
+                        android:id="@+id/txt_logout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:text="@string/logout"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

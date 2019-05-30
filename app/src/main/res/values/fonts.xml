@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="font_lato">Lato</string>
+    <!--<string name="font_lato_regular">Lato-Regular</string>
+    <string name="font_lato_bold">Lato-Bold</string>
+    <string name="font_lato_italic">Lato-Bold</string>
+    <string name="font_lato_bold_italic">Lato-BoldItalic</string>
+    <string name="font_lato_light">Lato-Light</string>-->
+
+    <string name="font_roboto">Roboto</string>
+    <!--<string name="font_roboto_regular">Roboto-Regular</string>
+    <string name="font_roboto_condensed_bold">Roboto-Bold</string>
+    <string name="font_roboto_condensed_italic">Roboto-Bold</string>
+    <string name="font_roboto_condensed_bold_italic">Roboto-BoldItalic</string>
+    <string name="font_roboto_condensed_light">Roboto-Light</string>
+    <string name="font_roboto_condensed_light_italic">Roboto-LightItalic</string>-->
+
+    <string name="textstyle_normal">4</string>
+
+
+</resources>

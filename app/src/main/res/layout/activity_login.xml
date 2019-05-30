@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/NestedScrollBarStyle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="eg.mimocodes.sciencehub.activity.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:padding="30dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/sciencehub" />
+
+            <EditText
+                android:id="@+id/etxt_login_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textSize="16sp"
+                android:background="@drawable/background_login"
+                android:drawablePadding="12dp"
+                android:padding="8dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingStart="30dp"
+                android:hint="@string/hint_username"
+                android:textColorHint="#fff"
+                android:textColor="@color/white"
+                android:maxLines="1"
+                android:drawableLeft="@drawable/ic_person_black_24dp"
+                android:drawableStart="@drawable/ic_person_black_24dp"
+                android:layout_marginTop="70dp"/>
+
+            <EditText
+                android:id="@+id/etxt_login_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textSize="16dp"
+                android:background="@drawable/background_login"
+                android:drawablePadding="12dp"
+                android:padding="8dp"
+                android:paddingLeft="30dp"
+                android:paddingStart="30dp"
+                android:hint="@string/hint_password"
+                android:textColorHint="#fff"
+                android:textColor="@color/white"
+                android:maxLines="1"
+                android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
+                android:layout_marginTop="24dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_round_edges_login"
+            android:onClick="onLoginButtonClick"
+            android:text="@string/btn_login"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp" />
+
+            <eg.mimocodes.sciencehub.widgets.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="20dp"
+                android:onClick="onForgotPasswordClick"
+                android:text="@string/btn_forgot_password"
+                app:textAllCaps="true"
+                android:textSize="10sp"
+                android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+</android.support.v4.widget.NestedScrollView>

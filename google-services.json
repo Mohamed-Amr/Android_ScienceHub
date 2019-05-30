@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "221897430034",
+    "firebase_url": "https://sciencehub-6ce49.firebaseio.com",
+    "project_id": "sciencehub-6ce49",
+    "storage_bucket": "sciencehub-6ce49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221897430034:android:729d9f020a818b6f",
+        "android_client_info": {
+          "package_name": "com.mimocodes.sciencehub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "221897430034-8nfi4jqp14iqbgfmmlthgmvutaf0euf9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDG6Q9Zydq9QcQLxDNB0gb3oyIQsmdKdOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "221897430034-8nfi4jqp14iqbgfmmlthgmvutaf0euf9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

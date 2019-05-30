@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout   xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:weightSum="10"
+    android:orientation="vertical"
+    android:fillViewport="true"
+    >
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_weight="5"
+        android:padding="30dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/sciencehub" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
+        <Button
+            android:id="@+id/signin_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:background="@drawable/bg_round_edges_login"
+            android:onClick="onWelcomeLoginClick"
+            android:text="@string/log_in"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:layout_below="@id/signin_btn"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_round_edges"
+            android:onClick="onWelcomeSignUpClick"
+            android:text="@string/sign_up"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/customTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:freezesText="false"
+            android:gravity="center"
+            android:textAlignment="gravity"
+            android:layout_alignParentBottom="true"
+            android:padding="8dp"
+            android:text="By logging in you agree to our terms of service and that you have read our Data Use Policy."
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+    </RelativeLayout>
+</LinearLayout  >
