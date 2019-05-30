@@ -60,9 +60,7 @@ import io.fabric.sdk.android.Fabric;
 import eg.mimocodes.sciencehub.advancedwebview.*;
 
 
-/*import com.digits.sdk.android.Digits;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
-import com.twitter.sdk.android.core.TwitterCore;*/
+
 
 public abstract class BaseActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
