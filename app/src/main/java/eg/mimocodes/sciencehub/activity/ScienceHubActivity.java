@@ -86,6 +86,9 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     ImageButton pubs ;
     ImageButton groups ;
     ImageButton pages ;
+    ImageButton requests ;
+    ImageButton messages ;
+    ImageButton notifications ;
 
 
 
@@ -203,6 +206,9 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         pubs = findViewById(R.id.imageButton4);
         groups = findViewById(R.id.imageButton5);
         pages = findViewById(R.id.imageButton6);
+        requests = findViewById(R.id.imageButton7);
+        messages = findViewById(R.id.imageButton8);
+        notifications = findViewById(R.id.imageButton9);
         ShWebView.setListener(this, this);
         setupView();
 
@@ -432,6 +438,10 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         groups.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         pages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
         ScienceHubActivity.webloadUrl("https://sciencehub.eg");
 
     }
@@ -443,6 +453,9 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         pubs.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
         groups.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         pages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         ScienceHubActivity.webloadUrl("https://sciencehub.eg/publications");
 
     }
@@ -455,6 +468,9 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         groups.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
         pages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         ScienceHubActivity.webloadUrl("https://sciencehub.eg/groups");
 
     }
@@ -467,8 +483,63 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         groups.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         pages.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
-        //ScienceHubActivity.webloadUrl("https://sciencehub.eg/pages");
-        ShWebView.evaluateJavascript("window.Sh_OpenNotificationsMenu; document.getElementsByClassName(\"dropdown-toggle sixteen-font-size\")[3].style.visibility='visible'; document.getElementsByClassName(\"dropdown-toggle sixteen-font-size\")[3].click();", new android.webkit.ValueCallback<String>() {
+        requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        ScienceHubActivity.webloadUrl("https://sciencehub.eg/pages");
+
+
+    }
+        public void onSciencehubRequestsClick(View view) {
+            view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+            drawerLayout.closeDrawers();
+            feeds.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            groups.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            pages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            requests.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
+            messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            ShWebView.evaluateJavascript("var requests = document.getElementById(\"requests-list\"); if(requests != null) {requests.style.visibility='visible';} var req_click = document.getElementById(\"requests-dropdown\"); if(req_click != null) {req_click.click();}", new android.webkit.ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String s) {
+                    Log.d("LogNameCommit", s); // Prints: "this"
+                }
+            });
+
+    }
+
+    public void onSciencehubMessagesClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        drawerLayout.closeDrawers();
+        feeds.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        groups.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        pages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        messages.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
+        notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        ShWebView.evaluateJavascript("var messages = document.getElementById(\"messages-list\"); if(messages != null) {messages.style.visibility='visible';} var messages_click = document.getElementById(\"messages-dropdown\"); if(messages_click != null) {messages_click.click();}", new android.webkit.ValueCallback<String>() {
+            @Override
+            public void onReceiveValue(String s) {
+                Log.d("LogNameCommit", s); // Prints: "this"
+            }
+        });
+
+    }
+
+
+    public void onSciencehubNotifictionsClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        drawerLayout.closeDrawers();
+        feeds.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        groups.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        pages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        notifications.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
+        ShWebView.evaluateJavascript("var notifications = document.getElementById(\"notification-container\"); if(notifications != null) {notifications.style.visibility='visible';} var notifications_click = document.getElementById(\"notifications-dropdown\"); if(notifications_click != null) {notifications_click.click();}", new android.webkit.ValueCallback<String>() {
             @Override
             public void onReceiveValue(String s) {
                 Log.d("LogNameCommit", s); // Prints: "this"

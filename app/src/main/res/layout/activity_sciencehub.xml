@@ -72,6 +72,33 @@
             android:contentDescription="@string/tech_pages"
             android:onClick="onSciencehubPagesClick"
             app:srcCompat="@drawable/page_small" />
+        <ImageButton
+            android:id="@+id/imageButton7"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:contentDescription="@string/tech_pages"
+            android:onClick="onSciencehubRequestsClick"
+            app:srcCompat="@drawable/page_small" />
+        <ImageButton
+            android:id="@+id/imageButton8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:contentDescription="@string/tech_pages"
+            android:onClick="onSciencehubMessagesClick"
+            app:srcCompat="@drawable/page_small" />
+        <ImageButton
+            android:id="@+id/imageButton9"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:contentDescription="@string/tech_pages"
+            android:onClick="onSciencehubNotifictionsClick"
+            app:srcCompat="@drawable/page_small" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
