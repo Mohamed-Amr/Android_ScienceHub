@@ -826,48 +826,71 @@ public class BaseAppCompatActivity extends BaseActivity {
 
     }
     public void onFeedsClick(View view) {
-
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
         ScienceHubActivity.webloadUrl("https://sciencehub.eg/");
-
     }
-
     public void onProfileClick(View view) {
-
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
         String user_name = LoginActivity.getDefaults("UserName", getBaseContext());
         ScienceHubActivity.webloadUrl("https://sciencehub.eg/"+ user_name + "/");
-
     }
-
     public void onGroupsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
         ScienceHubActivity.webloadUrl("https://sciencehub.eg/groups");
-
     }
-
     public void onTechPagesClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
         ScienceHubActivity.webloadUrl("https://sciencehub.eg/pages");
-
     }
-
     public void onPublicationsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
         ScienceHubActivity.webloadUrl("https://sciencehub.eg/publications");
-
     }
-
-
-
-
-
-
+    public void onMyOpportunitiesClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        drawerLayout.closeDrawers();
+        ScienceHubActivity.webloadUrl("https://sciencehub.eg/my-opportunities");
+    }
+    public void onOpportunitiesClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        drawerLayout.closeDrawers();
+        ScienceHubActivity.webloadUrl("https://sciencehub.eg/opportunities");
+    }
+    public void onMyPublicationsClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        drawerLayout.closeDrawers();
+        ScienceHubActivity.webloadUrl("https://sciencehub.eg/my-publications");
+    }
+    public void onMoviesClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        drawerLayout.closeDrawers();
+        ScienceHubActivity.webloadUrl("https://sciencehub.eg/movies");
+    }
+    public void onEventsClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        drawerLayout.closeDrawers();
+        ScienceHubActivity.webloadUrl("https://sciencehub.eg/events");
+    }
+    public void onForumClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        drawerLayout.closeDrawers();
+        ScienceHubActivity.webloadUrl("https://sciencehub.eg/forum");
+    }
+    public void onAlbumsClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        drawerLayout.closeDrawers();
+        ScienceHubActivity.webloadUrl("https://sciencehub.eg/albums");
+    }
+    public void onSettingClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        drawerLayout.closeDrawers();
+        ScienceHubActivity.webloadUrl("https://sciencehub.eg/setting");
+    }
     public void onLogoutClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
@@ -886,10 +909,7 @@ public class BaseAppCompatActivity extends BaseActivity {
         startActivity(new Intent(this, SplashActivity.class)
                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
         finish();
-
-
     }
-
 
     public void onEditClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);

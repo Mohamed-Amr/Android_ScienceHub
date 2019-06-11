@@ -306,6 +306,12 @@
     <string name="title_activity_registration_view">RegistrationViewActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="myopportunities">My Opportunities</string>
+    <string name="opportunities">Opportunities</string>
+    <string name="my_publications">My Publications</string>
+    <string name="forum">Forum</string>
+    <string name="albums">Albums</string>
+    <string name="setting">Settings</string>
 
 
 </resources>
