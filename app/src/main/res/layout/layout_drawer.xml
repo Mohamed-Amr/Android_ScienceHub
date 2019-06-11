@@ -358,10 +358,6 @@
                         android:textColor="@color/colorPrimary"
                         android:textSize="18sp" />
                 </LinearLayout>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -387,7 +383,20 @@
                         android:textSize="18sp" />
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
 
+                <TextView
+                    android:id="@+id/txt_by_mimocodes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/developed_with_honor_at_mimocodes_u00a0inc"
+                    android:textSize="14sp" />
             </LinearLayout>
 
         </LinearLayout>
