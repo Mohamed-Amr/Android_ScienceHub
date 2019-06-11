@@ -20,8 +20,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:padding="30dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/sciencehub" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/sciencehub_logo" />
 
             <EditText
                 android:id="@+id/etxt_login_email"

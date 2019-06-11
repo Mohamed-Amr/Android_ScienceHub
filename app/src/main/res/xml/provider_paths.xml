@@ -5,7 +5,7 @@
         path="Android/data/eg.mimocodes.sciencehub/"/>
     <external-path
         name="external_app_folder"
-        path="WeDel/"/>
+        path="."/>
     <external-path
         name="external_storage_root"
         path="."/>

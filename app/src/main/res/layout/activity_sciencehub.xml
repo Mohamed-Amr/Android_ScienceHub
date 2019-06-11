@@ -38,10 +38,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/bg_feedback"
+            android:background="@color/transparent"
             android:contentDescription="@string/home"
             android:onClick="onSciencehubFeedsClick"
-            app:srcCompat="@drawable/sh_icon_small" />
+            app:srcCompat="@drawable/home_small_new" />
 
         <ImageButton
             android:id="@+id/imageButton4"
@@ -51,7 +51,7 @@
             android:background="@color/colorPrimary"
             android:contentDescription="@string/pub_area"
             android:onClick="onSciencehubPubsClick"
-            app:srcCompat="@drawable/pub_small" />
+            app:srcCompat="@drawable/pub_small_new" />
 
         <ImageButton
             android:id="@+id/imageButton5"
@@ -61,7 +61,7 @@
             android:background="@color/colorPrimary"
             android:contentDescription="@string/res_groups"
             android:onClick="onSciencehubGroupsClick"
-            app:srcCompat="@drawable/group_small" />
+            app:srcCompat="@drawable/group_small_new" />
 
         <ImageButton
             android:id="@+id/imageButton6"
@@ -71,7 +71,7 @@
             android:background="@color/colorPrimary"
             android:contentDescription="@string/tech_pages"
             android:onClick="onSciencehubPagesClick"
-            app:srcCompat="@drawable/page_small" />
+            app:srcCompat="@drawable/page_small_new" />
         <ImageButton
             android:id="@+id/imageButton7"
             android:layout_width="0dp"
@@ -80,7 +80,7 @@
             android:background="@color/colorPrimary"
             android:contentDescription="@string/tech_pages"
             android:onClick="onSciencehubRequestsClick"
-            app:srcCompat="@drawable/page_small" />
+            app:srcCompat="@drawable/requests_small_new" />
         <ImageButton
             android:id="@+id/imageButton8"
             android:layout_width="0dp"
@@ -89,7 +89,7 @@
             android:background="@color/colorPrimary"
             android:contentDescription="@string/tech_pages"
             android:onClick="onSciencehubMessagesClick"
-            app:srcCompat="@drawable/page_small" />
+            app:srcCompat="@drawable/messages_small_new" />
         <ImageButton
             android:id="@+id/imageButton9"
             android:layout_width="0dp"
@@ -98,7 +98,7 @@
             android:background="@color/colorPrimary"
             android:contentDescription="@string/tech_pages"
             android:onClick="onSciencehubNotifictionsClick"
-            app:srcCompat="@drawable/page_small" />
+            app:srcCompat="@drawable/notifictions_small_new" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

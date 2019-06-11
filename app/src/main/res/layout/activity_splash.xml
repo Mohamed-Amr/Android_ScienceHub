@@ -10,11 +10,12 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:contentDescription="@string/wedel_logo"
-        android:scaleType="centerInside"
-        android:src="@drawable/sciencehub" />
+        android:contentDescription="sciencehub_logo"
+        android:minHeight="150dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/sciencehub_logo" />
 
     <TextView
         android:id="@+id/version_textView"

@@ -9,14 +9,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-
+import eg.mimocodes.sciencehub.BuildConfig;
 import eg.mimocodes.sciencehub.R;
 import eg.mimocodes.sciencehub.app.App;
 import eg.mimocodes.sciencehub.dialogs.PopupMessage;
 import eg.mimocodes.sciencehub.util.AppConstants;
-
-import eg.mimocodes.sciencehub.BuildConfig;
 
 public class SplashActivity extends BaseAppCompatNoDrawerActivity {
 
@@ -33,7 +30,7 @@ public class SplashActivity extends BaseAppCompatNoDrawerActivity {
         setContentView(R.layout.activity_splash);
 
         // Dynamically show the current app version
-        TextView appVersion = (TextView) findViewById(R.id.version_textView);
+        TextView appVersion = findViewById(R.id.version_textView);
         int versionCode = BuildConfig.VERSION_CODE;
         String versionName = BuildConfig.VERSION_NAME;
         if (BuildConfig.DEBUG) {
