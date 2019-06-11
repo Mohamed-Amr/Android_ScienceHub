@@ -551,6 +551,12 @@ public class AdvancedWebView extends WebView {
 						Log.d("LogNameCommit", s); // Prints: "this"
 					}
 				});
+				view.evaluateJavascript("var element = document.querySelector(\".content-container\"); element.style.marginTop = 0; ", new android.webkit.ValueCallback<String>() {
+					@Override
+					public void onReceiveValue(String s) {
+						Log.d("LogNameCommit", s); // Prints: "this"
+					}
+				});
 
 			}
 

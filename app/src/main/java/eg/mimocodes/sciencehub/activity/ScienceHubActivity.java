@@ -261,9 +261,9 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
 
         ShWebView.setCookiesEnabled(true);
         ShWebView.setGeolocationEnabled(true);
-
         ShWebView.setWebChromeClient(new WebChromeClient());
         ShWebView.setWebViewClient(new WebViewClient()
+
            /* @Override
             public void onPageFinished(WebView view, String url) {
 
@@ -545,6 +545,7 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
                 Log.d("LogNameCommit", s); // Prints: "this"
             }
         });
+
 
     }
 
