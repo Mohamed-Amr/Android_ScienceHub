@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import eg.mimocodes.sciencehub.listeners.BasicListener;
 import eg.mimocodes.sciencehub.listeners.LoginListener;
+import eg.mimocodes.sciencehub.listeners.PasswordResetListener;
 import eg.mimocodes.sciencehub.listeners.RegistrationListener;
 import eg.mimocodes.sciencehub.listeners.UserInfoListener;
 import eg.mimocodes.sciencehub.model.AuthBean;
@@ -13,6 +14,7 @@ import eg.mimocodes.sciencehub.model.BasicBean;
 
 import eg.mimocodes.sciencehub.model.UserBean;
 import eg.mimocodes.sciencehub.net.WSAsyncTasks.LoginTask;
+import eg.mimocodes.sciencehub.net.WSAsyncTasks.PasswordResetTask;
 import eg.mimocodes.sciencehub.net.WSAsyncTasks.UpdateFCMTokenTask;
 import eg.mimocodes.sciencehub.net.WSAsyncTasks.UserInfoTask;
 import eg.mimocodes.sciencehub.util.AppConstants;
@@ -102,6 +104,34 @@ public class DataManager {
             }
         });
         loginTask.execute();
+    }
+
+
+    public static void performNewPassword(JSONObject postData, final PasswordResetListener listener) {
+
+        PasswordResetTask ResetTask = new PasswordResetTask(postData);
+        ResetTask.setLoginTaskListener(new PasswordResetTask.PasswordResetListener() {
+            @Override
+            public void dataDownloadedSuccessfully(BasicBean basicBean) {
+                if (basicBean == null)
+                    listener.onLoadFailed(AppConstants.WEB_ERROR_MSG);
+                else {
+                    if (basicBean.getStatus().equalsIgnoreCase("Success")) {
+                        listener.onLoadCompleted(basicBean);
+                    } else if (basicBean.getStatus().equalsIgnoreCase("Error")) {
+                        listener.onLoadFailed(basicBean.getErrorMsg());
+                    } else {
+                        listener.onLoadFailed(AppConstants.WEB_ERROR_MSG);
+                    }
+                }
+            }
+
+            @Override
+            public void dataDownloadFailed() {
+                listener.onLoadFailed(AppConstants.WEB_ERROR_MSG);
+            }
+        });
+        ResetTask.execute();
     }
 
 

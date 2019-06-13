@@ -87,6 +87,11 @@
             android:theme="@style/LoginTheme"
             android:windowSoftInputMode="stateHidden|adjustResize"></activity>
         <activity
+            android:name=".activity.ForgotPasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/LoginTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
+        <activity
             android:name=".activity.RegistrationViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_registration_view"
