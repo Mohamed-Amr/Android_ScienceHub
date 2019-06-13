@@ -544,7 +544,6 @@ public class AdvancedWebView extends WebView {
 			@Override
 			public void onPageCommitVisible(WebView view, String url) {
 				super.onPageCommitVisible(view, url);
-
 				view.evaluateJavascript("var head = document.querySelector('.header-container'); if(head != null) {head.style.visibility='hidden'};  var foot = document.querySelector(\"footer\"); if(foot != null){foot.remove();}", new android.webkit.ValueCallback<String>() {
 					@Override
 					public void onReceiveValue(String s) {
@@ -575,6 +574,13 @@ public class AdvancedWebView extends WebView {
 				}
 				if (mCustomWebViewClient != null) {
 					mCustomWebViewClient.onPageFinished(view, url);
+					view.evaluateJavascript("var foot = document.querySelector(\"footer\"); if(foot != null){foot.remove();}", new android.webkit.ValueCallback<String>() {
+						@Override
+						public void onReceiveValue(String s) {
+							Log.d("LogNameCommit", s); // Prints: "this"
+						}
+					});
+
 					String is_logged_in = LoginActivity.getDefaults("IsLoggedIn", getContext());
 					if (is_logged_in.equals("0"))
 					{

@@ -500,6 +500,12 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
             requests.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
             messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            ShWebView.evaluateJavascript("var requests = document.getElementById(\"requests-list\"); if(requests != null) {requests.style.top=\"0\";} ", new android.webkit.ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String s) {
+                    Log.d("LogNameCommit", s);
+                }
+            });
             ShWebView.evaluateJavascript("var requests = document.getElementById(\"requests-list\"); if(requests != null) {requests.style.visibility='visible';} var req_click = document.getElementById(\"requests-dropdown\"); if(req_click != null) {req_click.click();}", new android.webkit.ValueCallback<String>() {
                 @Override
                 public void onReceiveValue(String s) {
@@ -519,6 +525,12 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         messages.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
         notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        ShWebView.evaluateJavascript("var messages = document.getElementById(\"messages-list\"); if(messages != null) {messages.style.top=\"0\";} ", new android.webkit.ValueCallback<String>() {
+            @Override
+            public void onReceiveValue(String s) {
+                Log.d("LogNameCommit", s);
+            }
+        });
         ShWebView.evaluateJavascript("var messages = document.getElementById(\"messages-list\"); if(messages != null) {messages.style.visibility='visible';} var messages_click = document.getElementById(\"messages-dropdown\"); if(messages_click != null) {messages_click.click();}", new android.webkit.ValueCallback<String>() {
             @Override
             public void onReceiveValue(String s) {
@@ -539,6 +551,12 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         notifications.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
+        ShWebView.evaluateJavascript("var notifications = document.getElementById(\"notification-container\"); if(notifications != null) {notifications.style.top=\"0\";} ", new android.webkit.ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String s) {
+                        Log.d("LogNameCommit", s);
+                    }
+                });
         ShWebView.evaluateJavascript("var notifications = document.getElementById(\"notification-container\"); if(notifications != null) {notifications.style.visibility='visible';} var notifications_click = document.getElementById(\"notifications-dropdown\"); if(notifications_click != null) {notifications_click.click();}", new android.webkit.ValueCallback<String>() {
             @Override
             public void onReceiveValue(String s) {
