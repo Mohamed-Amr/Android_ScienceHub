@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.io.InputStream;
@@ -425,23 +426,66 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
             e.printStackTrace();
         }
     }
-
     private void setUser() {
         String username;
         username = Config.getInstance().getName();
     }
 
+    List<String> tabs = new ArrayList<>(Arrays.asList("Feeds", "pubs", "groups", "pages", "requests", "messages", "notifications"));
+
+    private void resetViews(){
+    feeds.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+    pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+    groups.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+    pages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+    requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+    messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+    notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
+    feeds.setImageResource(R.drawable.home_small_new);
+    pubs.setImageResource(R.drawable.pub_small_new);
+    groups.setImageResource(R.drawable.group_small_new);
+    pages.setImageResource(R.drawable.page_small_new);
+    requests.setImageResource(R.drawable.requests_small_new);
+    messages.setImageResource(R.drawable.messages_small_new);
+    notifications.setImageResource(R.drawable.notifictions_small_new);
+
+}
+    private void setBackgroundFeedback(View view, int which){
+        resetViews();
+        view.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
+        switch(which){
+            case 0:
+                ((ImageButton) view).setImageResource(R.drawable.home_small_new_inv);
+                break;
+            case 1:
+                ((ImageButton) view).setImageResource(R.drawable.pub_small_new_inv);
+                break;
+            case 2:
+                ((ImageButton) view).setImageResource(R.drawable.group_small_new_inv);
+                break;
+            case 3:
+                ((ImageButton) view).setImageResource(R.drawable.page_small_new_inv);
+                break;
+            case 4:
+                ((ImageButton) view).setImageResource(R.drawable.requests_small_new_inv);
+                break;
+            case 5:
+                ((ImageButton) view).setImageResource(R.drawable.messages_small_new_inv);
+                break;
+            case 6:
+                ((ImageButton) view).setImageResource(R.drawable.notifictions_small_new_inv);
+                break;
+            default:
+                System.out.println("ERROR: ImageButton out of range");
+                break;
+        }
+    }
+
     public void onSciencehubFeedsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        feeds.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
-        pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        groups.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        pages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-
+        setBackgroundFeedback(view,0);
         ScienceHubActivity.webloadUrl("https://sciencehub.eg");
 
     }
@@ -449,13 +493,7 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     public void onSciencehubPubsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        feeds.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        pubs.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
-        groups.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        pages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        setBackgroundFeedback(view,1);
         ScienceHubActivity.webloadUrl("https://sciencehub.eg/publications");
 
     }
@@ -464,13 +502,7 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     public void onSciencehubGroupsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        feeds.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        groups.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
-        pages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        setBackgroundFeedback(view,2);
         ScienceHubActivity.webloadUrl("https://sciencehub.eg/groups");
 
     }
@@ -479,13 +511,7 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     public void onSciencehubPagesClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        feeds.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        groups.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        pages.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
-        requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        setBackgroundFeedback(view,3);
         ScienceHubActivity.webloadUrl("https://sciencehub.eg/pages");
 
 
@@ -493,13 +519,7 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         public void onSciencehubRequestsClick(View view) {
             view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             drawerLayout.closeDrawers();
-            feeds.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            groups.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            pages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            requests.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
-            messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            setBackgroundFeedback(view,4);
             ShWebView.evaluateJavascript("var requests = document.getElementById(\"requests-list\"); if(requests != null) {requests.style.top=\"0\";} ", new android.webkit.ValueCallback<String>() {
                 @Override
                 public void onReceiveValue(String s) {
@@ -518,13 +538,7 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     public void onSciencehubMessagesClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        feeds.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        groups.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        pages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        messages.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
-        notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        setBackgroundFeedback(view,5);
         ShWebView.evaluateJavascript("var messages = document.getElementById(\"messages-list\"); if(messages != null) {messages.style.top=\"0\";} ", new android.webkit.ValueCallback<String>() {
             @Override
             public void onReceiveValue(String s) {
@@ -544,13 +558,7 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     public void onSciencehubNotifictionsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        feeds.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        groups.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        pages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        requests.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        notifications.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
+        setBackgroundFeedback(view,6);
         ShWebView.evaluateJavascript("var notifications = document.getElementById(\"notification-container\"); if(notifications != null) {notifications.style.top=\"0\";} ", new android.webkit.ValueCallback<String>() {
                     @Override
                     public void onReceiveValue(String s) {

@@ -39,7 +39,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/transparent"
-            android:contentDescription="@string/home"
+            android:contentDescription="@string/feeds"
             android:onClick="onSciencehubFeedsClick"
             app:srcCompat="@drawable/home_small_new" />
 
@@ -49,7 +49,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:contentDescription="@string/pub_area"
+            android:contentDescription="pubs"
             android:onClick="onSciencehubPubsClick"
             app:srcCompat="@drawable/pub_small_new" />
 
@@ -59,7 +59,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:contentDescription="@string/res_groups"
+            android:contentDescription="groups"
             android:onClick="onSciencehubGroupsClick"
             app:srcCompat="@drawable/group_small_new" />
 
@@ -69,7 +69,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:contentDescription="@string/tech_pages"
+            android:contentDescription="pages"
             android:onClick="onSciencehubPagesClick"
             app:srcCompat="@drawable/page_small_new" />
         <ImageButton
@@ -78,7 +78,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:contentDescription="@string/tech_pages"
+            android:contentDescription="requests"
             android:onClick="onSciencehubRequestsClick"
             app:srcCompat="@drawable/requests_small_new" />
         <ImageButton
@@ -87,7 +87,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:contentDescription="@string/tech_pages"
+            android:contentDescription="messages"
             android:onClick="onSciencehubMessagesClick"
             app:srcCompat="@drawable/messages_small_new" />
         <ImageButton
@@ -96,7 +96,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:contentDescription="@string/tech_pages"
+            android:contentDescription="notifications"
             android:onClick="onSciencehubNotifictionsClick"
             app:srcCompat="@drawable/notifictions_small_new" />
     </LinearLayout>
