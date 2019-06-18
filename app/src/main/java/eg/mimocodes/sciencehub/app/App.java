@@ -113,7 +113,7 @@ public class App extends Application {
                 printWriter.close();
 
                 ex.printStackTrace();
-                Toast.makeText(getApplicationContext(), "WeDel Has Crashed Due To An Error."
+                Toast.makeText(getApplicationContext(), "ScienceHub Has Crashed Due To An Error."
                         + "\nApplication Will Restart Now."
                         + "\nSorry For Any Inconvinience Caused", Toast.LENGTH_SHORT).show();
                 //	    			restart(getApplicationContext(), 2000);
