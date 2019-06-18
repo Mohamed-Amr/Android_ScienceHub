@@ -7,6 +7,5 @@ class BasicBean : BaseBean() {
     var otpCode: String = ""
     var authToken: String = ""
     var requestStatus: String = ""
-    var arrivaltStatus: String = ""
     var isPhoneAvailable: Boolean = false
 }

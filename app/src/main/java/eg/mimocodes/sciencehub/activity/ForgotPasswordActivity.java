@@ -1,5 +1,6 @@
 package eg.mimocodes.sciencehub.activity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -7,11 +8,16 @@ import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import eg.mimocodes.sciencehub.R;
+import eg.mimocodes.sciencehub.listeners.BasicListener;
+import eg.mimocodes.sciencehub.listeners.PasswordResetListener;
+import eg.mimocodes.sciencehub.model.BasicBean;
+import eg.mimocodes.sciencehub.net.DataManager;
 
 
 public class ForgotPasswordActivity extends BaseAppCompatNoDrawerActivity {
@@ -57,30 +63,33 @@ public class ForgotPasswordActivity extends BaseAppCompatNoDrawerActivity {
     }
 
 
-   /* public void performNewPassword() {
+    public void performNewPassword() {
 
         swipeView.setRefreshing(true);
         JSONObject postData = getNewPasswordJSObj();
 
-        DataManager.performNewPassword(postData, new BasicListener() {
+        DataManager.performNewPassword(postData, new PasswordResetListener() {
 
             @Override
             public void onLoadCompleted(BasicBean basicBean) {
-
                 swipeView.setRefreshing(false);
                 Toast.makeText(getApplicationContext(), R.string.message_your_new_password_is_sent_to_your_email_address,
                         Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
+                startActivity(intent);
                 finish();
             }
 
             @Override
             public void onLoadFailed(String error) {
                 swipeView.setRefreshing(false);
+                Toast.makeText(getApplicationContext(), R.string.message_enter_a_valid_email_address,
+                        Toast.LENGTH_LONG).show();
                 finish();
 
             }
         });
-    }*/
+    }
 
     private JSONObject getNewPasswordJSObj() {
 
@@ -88,7 +97,8 @@ public class ForgotPasswordActivity extends BaseAppCompatNoDrawerActivity {
 
         try {
 
-            postData.put("email", etxtEmail.getText().toString());
+            postData.put("recover_email", etxtEmail.getText().toString());
+            postData.put("auth_token", R.string.api_key);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -101,7 +111,7 @@ public class ForgotPasswordActivity extends BaseAppCompatNoDrawerActivity {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 
         if (validateEmail()){}
-            //performNewPassword();
+            performNewPassword();
 
     }
 }
