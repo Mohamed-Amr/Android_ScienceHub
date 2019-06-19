@@ -550,13 +550,20 @@ public class AdvancedWebView extends WebView {
 						Log.d("LogNameCommit", s); // Prints: "this"
 					}
 				});
-				view.evaluateJavascript("var element = document.querySelector(\".content-container\"); element.style.marginTop = 0; ", new android.webkit.ValueCallback<String>() {
+				view.evaluateJavascript("var element = document.querySelector(\".content-container\"); if(element != null) {element.style.marginTop = 0;} ", new android.webkit.ValueCallback<String>() {
 					@Override
 					public void onReceiveValue(String s) {
 						Log.d("LogNameCommit", s); // Prints: "this"
 					}
 				});
-				view.evaluateJavascript("var list_ul = document.getElementById(\"filterby-post\").style.top = \"0px\";", new android.webkit.ValueCallback<String>() {
+				view.evaluateJavascript("var list_ul = document.getElementById(\"filterby-post\"); if(list_ul != null) {list_ul.style.top = \"0px\";}", new android.webkit.ValueCallback<String>() {
+					@Override
+					public void onReceiveValue(String s) {
+						Log.d("LogNameCommit", s); // Prints: "this"
+					}
+				});
+
+				view.evaluateJavascript("var list_messages = document.getElementById(\"wo_msg_right_prt\"); if(list_messages!=null) {list_messages.style.top = \"0px\";}", new android.webkit.ValueCallback<String>() {
 					@Override
 					public void onReceiveValue(String s) {
 						Log.d("LogNameCommit", s); // Prints: "this"

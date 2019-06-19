@@ -38,10 +38,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/transparent"
-            android:contentDescription="@string/feeds"
+            android:background="@color/bg_feedback"
+            android:contentDescription="feeds"
             android:onClick="onSciencehubFeedsClick"
-            app:srcCompat="@drawable/home_small_new" />
+            app:srcCompat="@drawable/home_small_new_inv" />
 
         <ImageButton
             android:id="@+id/imageButton4"
@@ -72,33 +72,94 @@
             android:contentDescription="pages"
             android:onClick="onSciencehubPagesClick"
             app:srcCompat="@drawable/page_small_new" />
-        <ImageButton
-            android:id="@+id/imageButton7"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:contentDescription="requests"
-            android:onClick="onSciencehubRequestsClick"
-            app:srcCompat="@drawable/requests_small_new" />
-        <ImageButton
-            android:id="@+id/imageButton8"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:contentDescription="messages"
-            android:onClick="onSciencehubMessagesClick"
-            app:srcCompat="@drawable/messages_small_new" />
-        <ImageButton
-            android:id="@+id/imageButton9"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:contentDescription="notifications"
-            android:onClick="onSciencehubNotifictionsClick"
-            app:srcCompat="@drawable/notifictions_small_new" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="45dp">
+            <ImageButton
+                android:id="@+id/imageButton7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:contentDescription="requests"
+                android:onClick="onSciencehubRequestsClick"
+                app:srcCompat="@drawable/requests_small_new" />
+            <TextView
+                android:id="@+id/textRequests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/imageButton7"
+                android:layout_alignRight="@id/imageButton7"
+                android:text="0"
+                android:textColor="#FFF"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:background="@drawable/badge_circle"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="45dp">
+            <ImageButton
+                android:id="@+id/imageButton8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:contentDescription="messages"
+                android:onClick="onSciencehubMessagesClick"
+                android:textAlignment="center"
+                android:textDirection="ltr"
+                app:srcCompat="@drawable/messages_small_new" />
+            <TextView
+                android:id="@+id/textMessages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/imageButton8"
+                android:layout_alignRight="@id/imageButton8"
+                android:text="0"
+                android:textColor="#FFF"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:background="@drawable/badge_circle"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_weight=".142">
+            <ImageButton
+                android:id="@+id/imageButton9"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:contentDescription="notifications"
+                android:onClick="onSciencehubNotifictionsClick"
+                app:srcCompat="@drawable/notifictions_small_new" />
+            <TextView
+                android:id="@+id/textNotifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/imageButton9"
+                android:layout_alignRight="@id/imageButton9"
+                android:text="0"
+                android:textColor="#FFF"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:background="@drawable/badge_circle"/>
+        </LinearLayout>
+
+
+
+
+
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

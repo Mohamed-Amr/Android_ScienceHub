@@ -41,7 +41,7 @@ public class SciencehubFirebaseMessagingService extends FirebaseMessagingService
                     try{
                         AJson = NotificationJson.getJSONObject("a");
                         Log.i(TAG, "Message URL: " + AJson.get("url"));
-                        InitiateScienceHubActivity(AJson.get("url").toString());
+                        //InitiateScienceHubActivity(AJson.get("url").toString());
                     }catch (Exception e)
                     {
                         e.printStackTrace();

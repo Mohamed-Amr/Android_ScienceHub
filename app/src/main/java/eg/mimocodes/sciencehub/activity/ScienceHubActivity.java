@@ -46,6 +46,7 @@ import android.app.DownloadManager;
 import android.graphics.Bitmap;
 
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -90,6 +91,10 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     ImageButton requests ;
     ImageButton messages ;
     ImageButton notifications ;
+    TextView textNotifications;
+    TextView textMessages;
+    TextView textRequests;
+
 
 
 
@@ -114,10 +119,15 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         setContentView(R.layout.activity_sciencehub);
 
         initViews();
+        mHandler.post(runnable);
         //setProgressScreenVisibility(true, true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setIcon(R.drawable.sciencehub_small);
+        textMessages.setVisibility(View.INVISIBLE);
+        textNotifications.setVisibility(View.INVISIBLE);
+        textRequests.setVisibility(View.INVISIBLE);
+
         swipeView.setRefreshing(true);
         if (getIntent().getStringExtra("username") != null)
         {
@@ -193,6 +203,88 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     }
 
 
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            if(ShWebView !=null)
+            {
+                ShWebView.evaluateJavascript("document.getElementById(\"message-count\").innerHTML;", new android.webkit.ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String s) {
+                        if(s!=null) {
+                                if (isNumeric(s.replaceAll("^\"|\"$", ""))) {
+                                    textMessages.setVisibility(View.VISIBLE);
+                                    textMessages.setText(s.replaceAll("^\"|\"$", ""));
+                                } else {
+                                    textMessages.setVisibility(View.INVISIBLE);
+                                }
+                        } else
+                        {
+                            textMessages.setVisibility(View.INVISIBLE);
+
+                        }
+
+                    }
+                });
+
+                ShWebView.evaluateJavascript("document.getElementById(\"notification-count\").innerHTML;", new android.webkit.ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String s) {
+                        if(s!=null) {
+                                if(isNumeric(s.replaceAll("^\"|\"$", "")))
+                                {
+                                    textNotifications.setVisibility(View.VISIBLE);
+                                    textNotifications.setText(s.replaceAll("^\"|\"$", ""));
+                                }
+                                else
+                                {
+                                    textNotifications.setVisibility(View.INVISIBLE);
+                                }
+                    } else
+                    {
+                        textMessages.setVisibility(View.INVISIBLE);
+
+                    }
+
+                    }
+                });
+
+
+                ShWebView.evaluateJavascript("document.getElementById(\"request-count\").innerHTML;", new android.webkit.ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String s) {
+                        if(s!=null) {
+                                if(isNumeric(s.replaceAll("^\"|\"$", "")))
+                                {
+                                    textRequests.setVisibility(View.VISIBLE);
+                                    textRequests.setText(s.replaceAll("^\"|\"$", ""));
+                                }
+                                else
+                                {
+                                    textRequests.setVisibility(View.INVISIBLE);
+                                }
+                    } else
+                    {
+                        textMessages.setVisibility(View.INVISIBLE);
+
+                    }
+
+                    }
+                });
+            }
+                mHandler.postDelayed(this, 5000);
+            }
+    };
+
+    public static boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
+    }
+
 
     public void initViews() {
 
@@ -210,6 +302,9 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         requests = findViewById(R.id.imageButton7);
         messages = findViewById(R.id.imageButton8);
         notifications = findViewById(R.id.imageButton9);
+        textNotifications = findViewById(R.id.textNotifications);
+        textMessages = findViewById(R.id.textMessages);
+        textRequests = findViewById(R.id.textRequests);
         ShWebView.setListener(this, this);
         setupView();
 
@@ -519,6 +614,7 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         public void onSciencehubRequestsClick(View view) {
             view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             drawerLayout.closeDrawers();
+            textRequests.setVisibility(View.INVISIBLE);
             setBackgroundFeedback(view,4);
             ShWebView.evaluateJavascript("var requests = document.getElementById(\"requests-list\"); if(requests != null) {requests.style.top=\"0\";} ", new android.webkit.ValueCallback<String>() {
                 @Override
@@ -538,19 +634,23 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     public void onSciencehubMessagesClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
+        textMessages.setVisibility(View.INVISIBLE);
         setBackgroundFeedback(view,5);
-        ShWebView.evaluateJavascript("var messages = document.getElementById(\"messages-list\"); if(messages != null) {messages.style.top=\"0\";} ", new android.webkit.ValueCallback<String>() {
-            @Override
-            public void onReceiveValue(String s) {
-                Log.d("LogNameCommit", s);
-            }
-        });
-        ShWebView.evaluateJavascript("var messages = document.getElementById(\"messages-list\"); if(messages != null) {messages.style.visibility='visible';} var messages_click = document.getElementById(\"messages-dropdown\"); if(messages_click != null) {messages_click.click();}", new android.webkit.ValueCallback<String>() {
+
+        ShWebView.evaluateJavascript("var messages = document.getElementById(\"messages-list\"); if(messages != null) {messages.style.visibility='visible'; messages.style.top=\"0\";} var messages_click = document.getElementById(\"messages-dropdown\"); if(messages_click != null) {messages_click.click();}", new android.webkit.ValueCallback<String>() {
             @Override
             public void onReceiveValue(String s) {
                 Log.d("LogNameCommit", s); // Prints: "this"
             }
         });
+        ShWebView.evaluateJavascript("document.getElementById(\"message-count\").innerHTML;", new android.webkit.ValueCallback<String>() {
+            @Override
+            public void onReceiveValue(String s) {
+                Log.d("Message Count", s);
+            }
+        });
+
+
 
     }
 
@@ -558,6 +658,7 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     public void onSciencehubNotifictionsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
+        textNotifications.setVisibility(View.INVISIBLE);
         setBackgroundFeedback(view,6);
         ShWebView.evaluateJavascript("var notifications = document.getElementById(\"notification-container\"); if(notifications != null) {notifications.style.top=\"0\";} ", new android.webkit.ValueCallback<String>() {
                     @Override
