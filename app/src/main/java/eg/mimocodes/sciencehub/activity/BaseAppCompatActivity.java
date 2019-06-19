@@ -836,6 +836,11 @@ public class BaseAppCompatActivity extends BaseActivity {
         String user_name = LoginActivity.getDefaults("UserName", getBaseContext());
         ScienceHubActivity.webloadUrl("https://sciencehub.eg/"+ user_name + "/");
     }
+    public void onSearchClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        drawerLayout.closeDrawers();
+        ScienceHubActivity.webloadUrl("https://sciencehub.eg/search");
+    }
     public void onGroupsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
