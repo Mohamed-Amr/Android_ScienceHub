@@ -430,53 +430,6 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     }
 
 
-
-    private class postLoginDataTask extends AsyncTask<Void, Void, Void>
-    {
-        // Create a new HttpClient and Post Header
-        HttpClient httpclient = new DefaultHttpClient();
-
-        HttpPost httppost = new HttpPost("https://sciencehub.eg/requests.php?f=login");
-        @Override
-        protected Void doInBackground(Void... params) {
-            try {
-                // Add user name and password
-                String username = "AmrAshry"/*getIntent().getStringExtra("username")*/;
-                String password = "ultimate"/*getIntent().getStringExtra("password")*/;
-
-                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-                nameValuePairs.add(new BasicNameValuePair("username", username));
-                nameValuePairs.add(new BasicNameValuePair("password", password));
-                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.UTF_8));
-
-                // Execute HTTP Post Request
-                Log.w("MMU", "Execute HTTP Post Request" + httppost.getURI());
-                HttpResponse response = httpclient.execute(httppost);
-
-                String str = inputStreamToString(response.getEntity().getContent()).toString();
-                Log.w("MMU", str);
-
-                if (str.toString().equalsIgnoreCase("true")) {
-                    Log.w("MMU", "Login success");
-
-                } else {
-                    Log.w("MMU", "Login fail");
-
-                }
-
-            } catch (ClientProtocolException e) {
-                e.printStackTrace();
-                return null;
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-            return null;
-        }
-
-    }
-
-
     private void fetchUserInfo() {
 
         HashMap<String, String> urlParams = new HashMap<>();
