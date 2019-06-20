@@ -26,6 +26,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
 import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.KeyEvent;
@@ -46,6 +47,8 @@ import android.app.DownloadManager;
 import android.graphics.Bitmap;
 
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -91,6 +94,14 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     ImageButton requests ;
     ImageButton messages ;
     ImageButton notifications ;
+
+    RelativeLayout requestsLayout ;
+    RelativeLayout messagesLayout;
+    RelativeLayout notificationsLayout;
+    RelativeLayout requests_rl;
+    RelativeLayout messages_rl;
+    RelativeLayout notifications_rl;
+
     TextView textNotifications;
     TextView textMessages;
     TextView textRequests;
@@ -124,9 +135,9 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setIcon(R.drawable.sciencehub_small);
-        textMessages.setVisibility(View.INVISIBLE);
-        textNotifications.setVisibility(View.INVISIBLE);
-        textRequests.setVisibility(View.INVISIBLE);
+        textMessages.setVisibility(View.GONE);
+        textNotifications.setVisibility(View.GONE);
+        textRequests.setVisibility(View.GONE);
 
         swipeView.setRefreshing(true);
         if (getIntent().getStringExtra("username") != null)
@@ -216,11 +227,11 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
                                     textMessages.setVisibility(View.VISIBLE);
                                     textMessages.setText(s.replaceAll("^\"|\"$", ""));
                                 } else {
-                                    textMessages.setVisibility(View.INVISIBLE);
+                                    textMessages.setVisibility(View.GONE);
                                 }
                         } else
                         {
-                            textMessages.setVisibility(View.INVISIBLE);
+                            textMessages.setVisibility(View.GONE);
 
                         }
 
@@ -238,11 +249,11 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
                                 }
                                 else
                                 {
-                                    textNotifications.setVisibility(View.INVISIBLE);
+                                    textNotifications.setVisibility(View.GONE);
                                 }
                     } else
                     {
-                        textMessages.setVisibility(View.INVISIBLE);
+                        textNotifications.setVisibility(View.GONE);
 
                     }
 
@@ -261,11 +272,11 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
                                 }
                                 else
                                 {
-                                    textRequests.setVisibility(View.INVISIBLE);
+                                    textRequests.setVisibility(View.GONE);
                                 }
                     } else
                     {
-                        textMessages.setVisibility(View.INVISIBLE);
+                        textRequests.setVisibility(View.GONE);
 
                     }
 
@@ -302,6 +313,15 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         requests = findViewById(R.id.imageButton7);
         messages = findViewById(R.id.imageButton8);
         notifications = findViewById(R.id.imageButton9);
+
+        requestsLayout = findViewById(R.id.layoutRequests);
+        messagesLayout = findViewById(R.id.layoutMessages);
+        notificationsLayout = findViewById(R.id.layoutNotifications);
+
+        requests_rl = findViewById(R.id.requests_rl);
+        messages_rl = findViewById(R.id.messages_rl);
+        notifications_rl = findViewById(R.id.notifications_rl);
+
         textNotifications = findViewById(R.id.textNotifications);
         textMessages = findViewById(R.id.textMessages);
         textRequests = findViewById(R.id.textRequests);
@@ -421,12 +441,8 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
                 dm.enqueue(request);
                 Toast.makeText(getApplicationContext(), "Downloading File", //To notify the Client that the file is being downloaded
                         Toast.LENGTH_LONG).show();
-
             }
         });
-
-
-
     }
 
 
@@ -479,8 +495,6 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         username = Config.getInstance().getName();
     }
 
-    List<String> tabs = new ArrayList<>(Arrays.asList("Feeds", "pubs", "groups", "pages", "requests", "messages", "notifications"));
-
     private void resetViews(){
     feeds.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
     pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
@@ -490,42 +504,60 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     messages.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
     notifications.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
+    requests_rl.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+    messages_rl.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+    notifications_rl.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
+//    requestsLayout.setBackgroundColor(getResources().getColor(R.color.transparent));
+//    messagesLayout.setBackgroundColor(getResources().getColor(R.color.transparent));
+//    notificationsLayout.setBackgroundColor(getResources().getColor(R.color.transparent));
+
     feeds.setImageResource(R.drawable.home_small_new);
     pubs.setImageResource(R.drawable.pub_small_new);
     groups.setImageResource(R.drawable.group_small_new);
     pages.setImageResource(R.drawable.page_small_new);
     requests.setImageResource(R.drawable.requests_small_new);
     messages.setImageResource(R.drawable.messages_small_new);
-    notifications.setImageResource(R.drawable.notifictions_small_new);
+    notifications.setImageResource(R.drawable.notifications_small_new);
 
 }
     private void setBackgroundFeedback(View view, int which){
         resetViews();
-        view.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
+
         switch(which){
             case 0:
+                feeds.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
                 ((ImageButton) view).setImageResource(R.drawable.home_small_new_inv);
                 break;
             case 1:
+                pubs.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
                 ((ImageButton) view).setImageResource(R.drawable.pub_small_new_inv);
                 break;
             case 2:
+                groups.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
                 ((ImageButton) view).setImageResource(R.drawable.group_small_new_inv);
                 break;
             case 3:
+                pages.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
                 ((ImageButton) view).setImageResource(R.drawable.page_small_new_inv);
                 break;
             case 4:
+                view.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
+                requests_rl.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
                 ((ImageButton) view).setImageResource(R.drawable.requests_small_new_inv);
                 break;
             case 5:
+                view.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
+                messages_rl.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
                 ((ImageButton) view).setImageResource(R.drawable.messages_small_new_inv);
                 break;
             case 6:
-                ((ImageButton) view).setImageResource(R.drawable.notifictions_small_new_inv);
+                view.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
+                notifications_rl.setBackgroundColor(getResources().getColor(R.color.bg_feedback));
+                ((ImageButton) view).setImageResource(R.drawable.notifications_small_new_inv);
                 break;
             default:
-                System.out.println("ERROR: ImageButton out of range");
+                Log.e(TAG, "Selected tab out of range.\n HINT:\nMaximum value must be < # of tabs.\nMinimum value = 0.\nReceived value: " + which +"\n");
                 break;
         }
     }
@@ -537,7 +569,6 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         ScienceHubActivity.webloadUrl("https://sciencehub.eg");
 
     }
-
     public void onSciencehubPubsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
@@ -545,8 +576,6 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         ScienceHubActivity.webloadUrl("https://sciencehub.eg/publications");
 
     }
-
-
     public void onSciencehubGroupsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
@@ -554,8 +583,6 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         ScienceHubActivity.webloadUrl("https://sciencehub.eg/groups");
 
     }
-
-
     public void onSciencehubPagesClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
@@ -564,7 +591,7 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
 
 
     }
-        public void onSciencehubRequestsClick(View view) {
+    public void onSciencehubRequestsClick(View view) {
             view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             drawerLayout.closeDrawers();
             textRequests.setVisibility(View.INVISIBLE);
@@ -583,11 +610,10 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
             });
 
     }
-
     public void onSciencehubMessagesClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        textMessages.setVisibility(View.INVISIBLE);
+        textMessages.setVisibility(View.GONE);
         setBackgroundFeedback(view,5);
 
         ShWebView.evaluateJavascript("var messages = document.getElementById(\"messages-list\"); if(messages != null) {messages.style.visibility='visible'; messages.style.top=\"0\";} var messages_click = document.getElementById(\"messages-dropdown\"); if(messages_click != null) {messages_click.click();}", new android.webkit.ValueCallback<String>() {
@@ -606,9 +632,7 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
 
 
     }
-
-
-    public void onSciencehubNotifictionsClick(View view) {
+    public void onSciencehubNotificationsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
         textNotifications.setVisibility(View.INVISIBLE);
@@ -628,9 +652,5 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
 
 
     }
-
-
-
-
 }
 
