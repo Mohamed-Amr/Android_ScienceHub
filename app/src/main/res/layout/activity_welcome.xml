@@ -24,33 +24,34 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5">
+
         <Button
             android:id="@+id/signin_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_gravity="center"
-            android:textSize="16sp"
-            android:background="@drawable/bg_round_edges_login"
+            android:background="@drawable/bg_round_edges"
             android:onClick="onWelcomeLoginClick"
             android:text="@string/log_in"
             android:textAllCaps="false"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="#fff"
+            android:textSize="16sp" />
 
         <Button
-            android:layout_below="@id/signin_btn"
-            android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/signin_btn"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/bg_round_edges"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_round_edges_gray"
             android:onClick="onWelcomeSignUpClick"
             android:text="@string/sign_up"
             android:textAllCaps="false"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/customTextView"

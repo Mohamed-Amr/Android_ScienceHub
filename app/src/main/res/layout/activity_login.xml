@@ -70,13 +70,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/bg_round_edges_login"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_round_edges"
             android:onClick="onLoginButtonClick"
             android:text="@string/btn_login"
             android:textAllCaps="false"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#fff"
             android:textSize="16dp" />
 
             <eg.mimocodes.sciencehub.widgets.CustomTextView
