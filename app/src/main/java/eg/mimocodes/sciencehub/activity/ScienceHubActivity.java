@@ -508,10 +508,6 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     messages_rl.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
     notifications_rl.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
-//    requestsLayout.setBackgroundColor(getResources().getColor(R.color.transparent));
-//    messagesLayout.setBackgroundColor(getResources().getColor(R.color.transparent));
-//    notificationsLayout.setBackgroundColor(getResources().getColor(R.color.transparent));
-
     feeds.setImageResource(R.drawable.home_small_new);
     pubs.setImageResource(R.drawable.pub_small_new);
     groups.setImageResource(R.drawable.group_small_new);
