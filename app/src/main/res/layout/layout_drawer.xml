@@ -78,14 +78,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#111">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:background="#111"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -94,25 +97,26 @@
                     android:orientation="horizontal">
 
                     <!--<ImageView-->
-                        <!--android:layout_width="26dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_gravity="center"-->
-                        <!--android:backgroundTint="@color/colorPrimary"-->
-                        <!--android:contentDescription="@string/profile_icon"-->
-                        <!--android:src="@drawable/sciencehub_icon" />-->
+                    <!--android:layout_width="26dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:backgroundTint="@color/colorPrimary"-->
+                    <!--android:contentDescription="@string/profile_icon"-->
+                    <!--android:src="@drawable/sciencehub_icon" />-->
 
                     <eg.mimocodes.sciencehub.widgets.CustomTextView
                         android:id="@+id/txt_feeds"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="15dp"
                         android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
                         android:text="@string/home"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -133,13 +137,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="15dp"
                         android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
                         android:text="@string/profile"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -160,17 +165,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="15dp"
                         android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
                         android:text="@string/search"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"/>
+                    android:background="@android:color/darker_gray" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
@@ -193,10 +200,11 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/tech_pages"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -205,30 +213,32 @@
                     android:orientation="horizontal">
 
                     <!--<ImageView-->
-                        <!--android:layout_width="26dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_gravity="center"-->
-                        <!--android:contentDescription="archive_icon"-->
-                        <!--android:src="@drawable/group" />-->
+                    <!--android:layout_width="26dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:contentDescription="archive_icon"-->
+                    <!--android:src="@drawable/group" />-->
 
                     <eg.mimocodes.sciencehub.widgets.CustomTextView
                         android:id="@+id/txt_res_groups"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="15dp"
                         android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
                         android:text="@string/res_groups"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="29dp"
                     android:layout_margin="8dp"
                     android:onClick="onMyOpportunitiesClick"
                     android:orientation="horizontal">
+
                     <eg.mimocodes.sciencehub.widgets.CustomTextView
                         android:id="@+id/txt_MyOpportunities"
                         android:layout_width="wrap_content"
@@ -236,15 +246,17 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="15dp"
                         android:text="@string/myopportunities"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="29dp"
                     android:layout_margin="8dp"
                     android:onClick="onOpportunitiesClick"
                     android:orientation="horizontal">
+
                     <eg.mimocodes.sciencehub.widgets.CustomTextView
                         android:id="@+id/txt_Opportunities"
                         android:layout_width="wrap_content"
@@ -252,9 +264,10 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="15dp"
                         android:text="@string/opportunities"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="29dp"
@@ -277,16 +290,18 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/pub_area"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="29dp"
                     android:layout_margin="8dp"
                     android:onClick="onMyPublicationsClick"
                     android:orientation="horizontal">
+
                     <eg.mimocodes.sciencehub.widgets.CustomTextView
                         android:id="@+id/txt_MyPublications"
                         android:layout_width="wrap_content"
@@ -294,19 +309,22 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="15dp"
                         android:text="@string/my_publications"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"/>
+                    android:background="@android:color/darker_gray" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="29dp"
                     android:layout_margin="8dp"
                     android:onClick="onMoviesClick"
                     android:orientation="horizontal">
+
                     <eg.mimocodes.sciencehub.widgets.CustomTextView
                         android:id="@+id/txt_Movies"
                         android:layout_width="wrap_content"
@@ -314,15 +332,17 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="15dp"
                         android:text="@string/movies"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="29dp"
                     android:layout_margin="8dp"
                     android:onClick="onEventsClick"
                     android:orientation="horizontal">
+
                     <eg.mimocodes.sciencehub.widgets.CustomTextView
                         android:id="@+id/txt_Events"
                         android:layout_width="wrap_content"
@@ -330,15 +350,17 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="15dp"
                         android:text="@string/events"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="29dp"
                     android:layout_margin="8dp"
                     android:onClick="onForumClick"
                     android:orientation="horizontal">
+
                     <eg.mimocodes.sciencehub.widgets.CustomTextView
                         android:id="@+id/txt_Forum"
                         android:layout_width="wrap_content"
@@ -346,15 +368,17 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="15dp"
                         android:text="@string/forum"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="29dp"
                     android:layout_margin="8dp"
                     android:onClick="onAlbumsClick"
                     android:orientation="horizontal">
+
                     <eg.mimocodes.sciencehub.widgets.CustomTextView
                         android:id="@+id/txt_Albums"
                         android:layout_width="wrap_content"
@@ -362,19 +386,22 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="15dp"
                         android:text="@string/albums"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"/>
+                    android:background="@android:color/darker_gray" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="29dp"
                     android:layout_margin="8dp"
                     android:onClick="onSettingClick"
                     android:orientation="horizontal">
+
                     <eg.mimocodes.sciencehub.widgets.CustomTextView
                         android:id="@+id/txt_setting"
                         android:layout_width="wrap_content"
@@ -382,9 +409,10 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="15dp"
                         android:text="@string/setting"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -393,27 +421,29 @@
                     android:orientation="horizontal">
 
                     <!--<ImageView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="center"-->
-                        <!--android:src="@drawable/ic_power_settings_new_black_24dp" />-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:src="@drawable/ic_power_settings_new_black_24dp" />-->
 
                     <eg.mimocodes.sciencehub.widgets.CustomTextView
                         android:id="@+id/txt_logout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="15dp"
                         android:layout_marginStart="15dp"
+                        android:layout_marginLeft="15dp"
                         android:text="@string/logout"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:textSize="18sp" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"/>
+                    android:background="@android:color/darker_gray" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -421,12 +451,12 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:contentDescription="mimocodes_logo"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="mimocodes_logo"
                         android:scaleType="fitXY"
-                    android:src="@drawable/mimocodes_logo" />
+                        android:src="@drawable/mimocodes_logo" />
 
                     <eg.mimocodes.sciencehub.widgets.CustomTextView
                         android:id="@+id/txt_by_mimocodes"
@@ -436,18 +466,19 @@
                         android:layout_marginStart="15dp"
                         android:layout_marginLeft="15dp"
                         android:text="@string/developed_with_honor_at_mimocodes_u00a0inc"
+                        android:textColor="@color/white"
                         android:textSize="14sp" />
 
                 </LinearLayout>
                 <!--<TextView-->
-                    <!--android:id="@+id/txt_by_mimocodes"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_margin="8dp"-->
-                    <!--android:layout_marginStart="8dp"-->
-                    <!--android:layout_marginBottom="8dp"-->
-                    <!--android:text="@string/developed_with_honor_at_mimocodes_u00a0inc"-->
-                    <!--android:textSize="14sp" />-->
+                <!--android:id="@+id/txt_by_mimocodes"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="8dp"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:layout_marginBottom="8dp"-->
+                <!--android:text="@string/developed_with_honor_at_mimocodes_u00a0inc"-->
+                <!--android:textSize="14sp" />-->
             </LinearLayout>
 
         </LinearLayout>

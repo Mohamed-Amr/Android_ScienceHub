@@ -544,6 +544,16 @@ public class AdvancedWebView extends WebView {
 			@Override
 			public void onPageCommitVisible(WebView view, String url) {
 				super.onPageCommitVisible(view, url);
+				/*view.evaluateJavascript("document.cookie = \"mode=night\";", new android.webkit.ValueCallback<String>() {
+					@Override
+					public void onReceiveValue(String s) {
+					}
+				});*/
+				view.evaluateJavascript("var welcome = document.getElementById(\"home_welcome_container\"); if(welcome != null) {welcome.style.visibility='hidden';}", new android.webkit.ValueCallback<String>() {
+					@Override
+					public void onReceiveValue(String s) {
+					}
+				});
 				view.evaluateJavascript("var head = document.querySelector('.header-container'); if(head != null) {head.style.visibility='hidden'};  var foot = document.querySelector(\"footer\"); if(foot != null){foot.remove();}", new android.webkit.ValueCallback<String>() {
 					@Override
 					public void onReceiveValue(String s) {
@@ -569,6 +579,10 @@ public class AdvancedWebView extends WebView {
 						Log.d("LogNameCommit", s); // Prints: "this"
 					}
 				});
+
+
+
+
 
 			}
 

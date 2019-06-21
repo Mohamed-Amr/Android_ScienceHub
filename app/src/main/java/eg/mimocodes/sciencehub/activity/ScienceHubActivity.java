@@ -34,6 +34,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.PermissionRequest;
 import android.webkit.WebChromeClient;
@@ -378,51 +379,7 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         ShWebView.setCookiesEnabled(true);
         ShWebView.setGeolocationEnabled(true);
         ShWebView.setWebChromeClient(new WebChromeClient());
-        ShWebView.setWebViewClient(new WebViewClient()
-
-           /* @Override
-            public void onPageFinished(WebView view, String url) {
-
-
-            }
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);
-                view.evaluateJavascript("document.querySelector(\"header\").remove();  document.querySelector(\"footer\").remove();", new android.webkit.ValueCallback<String>() {
-                    @Override
-                    public void onReceiveValue(String s) {
-                        Log.d("LogNameStart", s); // Prints: "this"
-                    }
-                });
-
-            }
-            @Override
-            public void onPageCommitVisible(WebView view, String url) {
-                super.onPageCommitVisible(view, url);
-                if (getIntent().getStringExtra("username") != null && getIntent().getStringExtra("password") != null ) {
-                    String user_name = getIntent().getStringExtra("username") ;
-                    String user_pass = getIntent().getStringExtra("password") ;
-                    getIntent().removeExtra("username");
-                    getIntent().removeExtra("password");
-                    view.evaluateJavascript("document.getElementById(\"username\").value = \" " + user_name + " \"; document.getElementById(\"password\").value = \""+ user_pass +"\"; document.querySelector(\"#html-submit\").click();", new android.webkit.ValueCallback<String>() {
-                        @Override
-                        public void onReceiveValue(String s) {
-                            Log.d("LogName", s); // Prints: "this"
-                        }
-                    });
-                }
-
-                view.evaluateJavascript("document.querySelector(\"header\").remove();  document.querySelector(\"footer\").remove();", new android.webkit.ValueCallback<String>() {
-                    @Override
-                    public void onReceiveValue(String s) {
-                        Log.d("LogNameCommit", s); // Prints: "this"
-                    }
-                });
-
-
-            }*/
-
-        );
+        ShWebView.setWebViewClient(new WebViewClient());
 
 
 
@@ -443,6 +400,9 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
         });
+
+        CookieManager.getInstance().setCookie("https://sciencehub.eg", "mode=night");
+
     }
 
 
