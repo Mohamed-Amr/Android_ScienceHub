@@ -14,14 +14,18 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.audio.CAPTURE_VIDEO_OUTPUT" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission
+    <uses-feature android:name="android.hardware.audio.REORDER_TASKS" />
+    <uses-feature android:name="android.hardware.microphone"/>
+    <!--<uses-permission
         android:name="android.permission.CAMERA"
         android:required="true" />
 
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="true" />
+        android:required="true" />-->
 
     <application
         android:name=".app.App"

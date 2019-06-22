@@ -88,7 +88,6 @@ public abstract class BaseActivity extends AppCompatActivity implements
 
     private static int CURRENT_ACTIVITY = 0;
     protected static final int HOME_ACTIVITY = 1;
-    protected static final int ON_TRIP_ACTIVITY = 2;
 
     protected FileOp fop;
 
@@ -154,7 +153,6 @@ public abstract class BaseActivity extends AppCompatActivity implements
     private ArrayList<LocationUpdateListener> locationUpdateListeners = new ArrayList<>();
     private ArrayList<PermissionListener> permissionListeners = new ArrayList<>();
 
-    private AdvancedWebView ShWebView;
 
 
 
@@ -522,7 +520,15 @@ public abstract class BaseActivity extends AppCompatActivity implements
                     || ActivityCompat.checkSelfPermission(this,
                     Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED
                     || ActivityCompat.checkSelfPermission(this,
-                    Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                    Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED
+                    || ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                    || ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED
+                    || ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.MODIFY_AUDIO_SETTINGS) != PackageManager.PERMISSION_GRANTED
+                    || ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.CAPTURE_VIDEO_OUTPUT) != PackageManager.PERMISSION_GRANTED) {
                 String[] permissions = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -531,7 +537,11 @@ public abstract class BaseActivity extends AppCompatActivity implements
                         Manifest.permission.GET_ACCOUNTS,
                         Manifest.permission.CLEAR_APP_CACHE,
                         Manifest.permission.ACCESS_NETWORK_STATE,
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.RECORD_AUDIO,
+                        Manifest.permission.MODIFY_AUDIO_SETTINGS,
                         Manifest.permission.INTERNET,
+                        Manifest.permission.CAPTURE_VIDEO_OUTPUT,
                         Manifest.permission.READ_PHONE_STATE};
 
                 ActivityCompat.requestPermissions(this, permissions, REQUEST_PERMISSIONS);
