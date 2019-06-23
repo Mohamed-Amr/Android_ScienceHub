@@ -1,6 +1,7 @@
 package eg.mimocodes.sciencehub.activity;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -37,6 +38,7 @@ import android.view.ViewGroup;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.PermissionRequest;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -83,11 +85,9 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     static AdvancedWebView ShWebView;
     private UserBean userBean;
     private static final String TAG = "ScienceHubActivity";
-    private static final int REQUEST_IMAGE_CAMERA = 1;
-    private static final int REQUEST_IMAGE_GALLERY = 2;
-    private String imagePath = "";
-    protected WebChromeClient mCustomWebChromeClient;
-    protected WebViewClient mCustomWebViewClient;
+
+
+
     ImageButton feeds ;
     ImageButton pubs ;
     ImageButton groups ;
@@ -116,20 +116,12 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
     }
 
 
-   /* private static GoogleMapOptions options = new GoogleMapOptions()
-            .mapType(GoogleMap.MAP_TYPE_NORMAL)
-            .compassEnabled(false)
-            .rotateGesturesEnabled(false)
-            .tiltGesturesEnabled(false)
-            .zoomControlsEnabled(false)
-            .scrollGesturesEnabled(false)
-            .mapToolbarEnabled(false);*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sciencehub);
-
+        getAllPermssions();
         initViews();
         mHandler.post(runnable);
         //setProgressScreenVisibility(true, true);
@@ -143,16 +135,13 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         swipeView.setRefreshing(true);
         if (getIntent().getStringExtra("username") != null)
         {
-            //new postLoginDataTask().execute();
             String url = getIntent().getStringExtra("url");
             ShWebView.loadUrl(url);
             swipeView.setRefreshing(false);
         }
         else {
-            //new postLoginDataTask().execute();
             String url = getIntent().getStringExtra("url");
             ShWebView.loadUrl(url);
-            //performWebLogin();
             swipeView.setRefreshing(false);
         }
 
@@ -187,31 +176,11 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         return true;
     }
 
-  private  void performWebLogin(){
-      ShWebView.evaluateJavascript("document.getElementById(\"username\").value = \"AmrAshry\"; document.getElementById(\"password\").value = \"ultimate\"; document.querySelector(\"#html-submit\").click();", new android.webkit.ValueCallback<String>() {
-          @Override
-          public void onReceiveValue(String s) {
-              Log.d("LogName", s); // Prints: "this"
-          }
-      });
-
-  }
-
-    private StringBuilder inputStreamToString(InputStream is) {
-        String line = "";
-        StringBuilder total = new StringBuilder();
-        // Wrap a BufferedReader around the InputStream
-        BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-        // Read response until the end
-        try {
-            while ((line = rd.readLine()) != null) {
-                total.append(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // Return full string
-        return total;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        ShWebView.onActivityResult(requestCode, resultCode, intent);
+        // ...
     }
 
 
@@ -306,7 +275,7 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         toolbarHome = (Toolbar) getLayoutInflater().inflate(R.layout.toolbar_landing_page, toolbar);
         coordinatorLayout.addView(toolbarHome, 0);
         setSupportActionBar(toolbarHome);
-        ShWebView =  findViewById(R.id.sciencehubview);
+        ShWebView =  (AdvancedWebView) findViewById(R.id.sciencehubview);
         feeds = findViewById(R.id.imageButton3);
         pubs = findViewById(R.id.imageButton4);
         groups = findViewById(R.id.imageButton5);
@@ -344,11 +313,12 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         ShWebView.getSettings().setDatabaseEnabled(true);
         ShWebView.getSettings().setSupportZoom(true);
         ShWebView.getSettings().setBuiltInZoomControls(false);
-        //ShWebView.getSettings().setMediaPlaybackRequiresUserGesture(false);
+        ShWebView.getSettings().setMediaPlaybackRequiresUserGesture(false);
         ShWebView.getSettings().setAllowUniversalAccessFromFileURLs(true);
         ShWebView.getSettings().setAllowFileAccessFromFileURLs(true);
         ShWebView.getSettings().setAllowContentAccess(true);
         ShWebView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        ShWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 
         // user agent
         if (WebViewAppConfig.WEBVIEW_USER_AGENT != null && !WebViewAppConfig.WEBVIEW_USER_AGENT.equals("")) {
@@ -378,7 +348,19 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
 
         ShWebView.setCookiesEnabled(true);
         ShWebView.setGeolocationEnabled(true);
-        ShWebView.setWebChromeClient(new WebChromeClient());
+        ShWebView.setWebChromeClient(new WebChromeClient()
+        {
+            @Override
+            public void onPermissionRequest(final PermissionRequest request) {
+                Log.d(TAG, "onPermissionRequest");
+                if(request.getOrigin().toString().equals("https://sciencehub.eg/")) {
+                    request.grant(request.getResources());
+                } else {
+                            request.deny();
+                }
+
+                }
+        });
         ShWebView.setWebViewClient(new WebViewClient());
 
 

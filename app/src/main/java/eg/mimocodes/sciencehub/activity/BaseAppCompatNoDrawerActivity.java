@@ -2,7 +2,9 @@ package eg.mimocodes.sciencehub.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -21,6 +23,7 @@ import android.graphics.Bitmap;
 
 import eg.mimocodes.sciencehub.R;
 import eg.mimocodes.sciencehub.util.FileOp;
+import eg.mimocodes.sciencehub.utility.PermissionUtility;
 
 
 public class BaseAppCompatNoDrawerActivity extends BaseActivity {
@@ -38,12 +41,15 @@ public class BaseAppCompatNoDrawerActivity extends BaseActivity {
     private View lytMessage;
     private TextView txtMessage;
     protected boolean isGetLocationEnabled = true;
+    private int mStoredActivityRequestCode;
+    private int mStoredActivityResultCode;
+    private Intent mStoredActivityResultIntent;
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-       /* if (requestCode == REQUEST_ENABLE_BT) {
+        if (requestCode == REQUEST_ENABLE_BT) {
             if (resultCode == Activity.RESULT_OK) {
                 isBluetoothEnableRequestShown = false;
             } else {
@@ -51,15 +57,15 @@ public class BaseAppCompatNoDrawerActivity extends BaseActivity {
                 Snackbar.make(coordinatorLayout, "Bluetooth Not Enabled", Snackbar.LENGTH_INDEFINITE)
                         .setAction(R.string.btn_dismiss, snackBarDismissOnClickListener).show();
             }
-        }*/
+        }
+
+
     }
 
     public void initViewBase() {
 
         initBase();
-        //	getActionBar().setHomeButtonEnabled(true);
 
-        //FacebookSdk.sdkInitialize(this.getApplicationContext());
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -208,5 +214,37 @@ public class BaseAppCompatNoDrawerActivity extends BaseActivity {
 
     @Override
     public void onExternalPageRequest(String url) { }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case PermissionUtility.REQUEST_PERMISSION_READ_EXTERNAL_STORAGE_AND_CAMERA:
+            case PermissionUtility.REQUEST_PERMISSION_WRITE_EXTERNAL_STORAGE:
+            case PermissionUtility.REQUEST_PERMISSION_ACCESS_LOCATION: {
+                // if request is cancelled, the result arrays are empty
+                if (grantResults.length > 0) {
+                    for (int i = 0; i < grantResults.length; i++) {
+                        if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                            // permission granted
+                            if (requestCode == PermissionUtility.REQUEST_PERMISSION_READ_EXTERNAL_STORAGE_AND_CAMERA) {
+                                // continue with activity result handling
+                                if (mStoredActivityResultIntent != null) {
+                                    ScienceHubActivity.ShWebView.onActivityResult(mStoredActivityRequestCode, mStoredActivityResultCode, mStoredActivityResultIntent);
+                                    mStoredActivityRequestCode = 0;
+                                    mStoredActivityResultCode = 0;
+                                    mStoredActivityResultIntent = null;
+                                }
+                            }
+                        } else {
+                            // permission denied
+                        }
+                    }
+                } else {
+                    // all permissions denied
+                }
+                break;
+            }
+        }
+    }
 
 }
