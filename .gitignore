@@ -32,8 +32,8 @@ bin/
 gen/
 
 # User-specific configurations
-.idea/caches/
-.idea/libraries/
+.idea/caches/*
+.idea/libraries/*
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/.name
