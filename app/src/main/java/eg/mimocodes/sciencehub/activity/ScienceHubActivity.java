@@ -136,12 +136,20 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         if (getIntent().getStringExtra("username") != null)
         {
             String url = getIntent().getStringExtra("url");
-            ShWebView.loadUrl(url);
+            if(App.isNetworkAvailable()) {
+                ShWebView.loadUrl(url);
+            }else{
+                ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+            }
             swipeView.setRefreshing(false);
         }
         else {
             String url = getIntent().getStringExtra("url");
-            ShWebView.loadUrl(url);
+            if(App.isNetworkAvailable()) {
+                ShWebView.loadUrl(url);
+            }else{
+                ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+            }
             swipeView.setRefreshing(false);
         }
 
@@ -504,36 +512,48 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
         setBackgroundFeedback(view,0);
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg");
-
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onSciencehubPubsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
         setBackgroundFeedback(view,1);
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/publications");
-
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/publications");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onSciencehubGroupsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
         setBackgroundFeedback(view,2);
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/groups");
-
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/groups");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onSciencehubPagesClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
         setBackgroundFeedback(view,3);
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/pages");
-
-
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/pages");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onSciencehubRequestsClick(View view) {
             view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
             drawerLayout.closeDrawers();
             textRequests.setVisibility(View.INVISIBLE);
             setBackgroundFeedback(view,4);
+        if(App.isNetworkAvailable()) {
             ShWebView.evaluateJavascript("var requests = document.getElementById(\"requests-list\"); if(requests != null) {requests.style.top=\"0\";} ", new android.webkit.ValueCallback<String>() {
                 @Override
                 public void onReceiveValue(String s) {
@@ -546,49 +566,53 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
                     Log.d("LogNameCommit", s); // Prints: "this"
                 }
             });
-
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onSciencehubMessagesClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
         textMessages.setVisibility(View.GONE);
         setBackgroundFeedback(view,5);
-
-        ShWebView.evaluateJavascript("var messages = document.getElementById(\"messages-list\"); if(messages != null) {messages.style.visibility='visible'; messages.style.top=\"0\";} var messages_click = document.getElementById(\"messages-dropdown\"); if(messages_click != null) {messages_click.click();}", new android.webkit.ValueCallback<String>() {
-            @Override
-            public void onReceiveValue(String s) {
-                Log.d("LogNameCommit", s); // Prints: "this"
-            }
-        });
-        ShWebView.evaluateJavascript("document.getElementById(\"message-count\").innerHTML;", new android.webkit.ValueCallback<String>() {
-            @Override
-            public void onReceiveValue(String s) {
-                Log.d("Message Count", s);
-            }
-        });
-
-
-
+        if(App.isNetworkAvailable()) {
+            ShWebView.evaluateJavascript("var messages = document.getElementById(\"messages-list\"); if(messages != null) {messages.style.visibility='visible'; messages.style.top=\"0\";} var messages_click = document.getElementById(\"messages-dropdown\"); if(messages_click != null) {messages_click.click();}", new android.webkit.ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String s) {
+                    Log.d("LogNameCommit", s); // Prints: "this"
+                }
+            });
+            ShWebView.evaluateJavascript("document.getElementById(\"message-count\").innerHTML;", new android.webkit.ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String s) {
+                    Log.d("Message Count", s);
+                }
+            });
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onSciencehubNotificationsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
         textNotifications.setVisibility(View.INVISIBLE);
         setBackgroundFeedback(view,6);
-        ShWebView.evaluateJavascript("var notifications = document.getElementById(\"notification-container\"); if(notifications != null) {notifications.style.top=\"0\";} ", new android.webkit.ValueCallback<String>() {
-                    @Override
-                    public void onReceiveValue(String s) {
-                        Log.d("LogNameCommit", s);
-                    }
-                });
-        ShWebView.evaluateJavascript("var notifications = document.getElementById(\"notification-container\"); if(notifications != null) {notifications.style.visibility='visible';} var notifications_click = document.getElementById(\"notifications-dropdown\"); if(notifications_click != null) {notifications_click.click();}", new android.webkit.ValueCallback<String>() {
-            @Override
-            public void onReceiveValue(String s) {
-                Log.d("LogNameCommit", s); // Prints: "this"
-            }
-        });
-
-
+        if(App.isNetworkAvailable()) {
+            ShWebView.evaluateJavascript("var notifications = document.getElementById(\"notification-container\"); if(notifications != null) {notifications.style.top=\"0\";} ", new android.webkit.ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String s) {
+                    Log.d("LogNameCommit", s);
+                }
+            });
+            ShWebView.evaluateJavascript("var notifications = document.getElementById(\"notification-container\"); if(notifications != null) {notifications.style.visibility='visible';} var notifications_click = document.getElementById(\"notifications-dropdown\"); if(notifications_click != null) {notifications_click.click();}", new android.webkit.ValueCallback<String>() {
+                @Override
+                public void onReceiveValue(String s) {
+                    Log.d("LogNameCommit", s); // Prints: "this"
+                }
+            });
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
 }
 
