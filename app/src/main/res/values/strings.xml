@@ -315,6 +315,7 @@
     <string name="setting">Settings</string>
     <string name="developed_with_honor_at_mimocodes_u00a0inc"><![CDATA[Developed with honor at MIMOCODES INC.]]></string>
     <string name="feeds">Feeds</string>
+    <string name="message_network_available">Network Available</string>
 
 
 </resources>

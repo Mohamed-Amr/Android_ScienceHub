@@ -828,73 +828,130 @@ public class BaseAppCompatActivity extends BaseActivity {
     public void onFeedsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/");
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onProfileClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        String user_name = LoginActivity.getDefaults("UserName", getBaseContext());
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/"+ user_name + "/");
+        if(App.isNetworkAvailable()) {
+            String user_name = LoginActivity.getDefaults("UserName", getBaseContext());
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/"+ user_name + "/");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
+
     }
     public void onSearchClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/search");
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/search");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onGroupsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/groups");
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/groups");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onTechPagesClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/pages");
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/pages");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onPublicationsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/publications");
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/publications");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onMyOpportunitiesClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/my-opportunities");
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/my-opportunities");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onOpportunitiesClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/opportunities");
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/opportunities");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onMyPublicationsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/my-publications");
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/my-publications");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onMoviesClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/movies");
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/movies");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onEventsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/events");
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/events");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onForumClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/forum");
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/forum");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onAlbumsClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/albums");
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/albums");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onSettingClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/setting");
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/setting");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
     public void onLogoutClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
@@ -919,7 +976,11 @@ public class BaseAppCompatActivity extends BaseActivity {
     public void onEditClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        ScienceHubActivity.webloadUrl("https://sciencehub.eg/setting/"+ LoginActivity.getDefaults("UserName", getBaseContext()) + "/avatar-setting");
+        if(App.isNetworkAvailable()) {
+            ScienceHubActivity.webloadUrl("https://sciencehub.eg/setting/"+ LoginActivity.getDefaults("UserName", getBaseContext()) + "/avatar-setting");
+        }else{
+            ScienceHubActivity.webloadUrl("file:///android_asset/offline.html");
+        }
     }
 
 }

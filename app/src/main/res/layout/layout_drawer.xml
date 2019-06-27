@@ -124,14 +124,6 @@
                     android:onClick="onProfileClick"
                     android:orientation="horizontal">
 
-                    <!--<ImageView-->
-                    <!--android:contentDescription="@string/profile_icon"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:src="@drawable/ic_person_blue_24dp"-->
-                    <!--android:backgroundTint="@color/colorPrimary"/>-->
-
                     <eg.mimocodes.sciencehub.widgets.CustomTextView
                         android:id="@+id/txt_profile"
                         android:layout_width="wrap_content"
