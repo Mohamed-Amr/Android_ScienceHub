@@ -631,6 +631,12 @@ public class AdvancedWebView extends WebView {
 					}
 
 				}
+
+				view.evaluateJavascript("var cookie_btn = document.getElementById(\"cookie_btn\"); if(cookie_btn != null) {cookie_btn.click();}", new android.webkit.ValueCallback<String>() {
+					@Override
+					public void onReceiveValue(String s) {
+					}
+				});
 			}
 
 

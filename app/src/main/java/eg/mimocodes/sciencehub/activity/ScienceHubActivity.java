@@ -38,36 +38,25 @@ import android.view.ViewGroup;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.PermissionRequest;
-import android.webkit.ValueCallback;
+
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
+
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.DownloadListener;
 import android.app.DownloadManager;
-import android.graphics.Bitmap;
+
 
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
+
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.protocol.HTTP;
+
 
 import eg.mimocodes.sciencehub.advancedwebview.*;
-import eg.mimocodes.sciencehub.utility.DownloadFileUtility;
-import eg.mimocodes.sciencehub.utility.*;
 
 import java.util.HashMap;
 
@@ -308,7 +297,7 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
         ShWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         ShWebView.getSettings().setAppCacheEnabled(true);
         ShWebView.getSettings().setAppCachePath(this.getCacheDir().getAbsolutePath());
-        ShWebView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+        ShWebView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         ShWebView.getSettings().setDomStorageEnabled(true);
         ShWebView.getSettings().setDatabaseEnabled(true);
         ShWebView.getSettings().setSupportZoom(true);
