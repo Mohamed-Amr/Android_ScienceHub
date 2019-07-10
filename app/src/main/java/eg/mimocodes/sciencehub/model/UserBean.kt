@@ -15,4 +15,6 @@ class UserBean : BaseBean() {
     var homeLongitude: String = ""
     var workLatitude: String = ""
     var workLongitude: String = ""
+    var workPosition: String = ""
+
 }

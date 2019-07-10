@@ -384,56 +384,6 @@ public class ScienceHubActivity extends BaseAppCompatActivity {
 
     }
 
-
-    private void fetchUserInfo() {
-
-        HashMap<String, String> urlParams = new HashMap<>();
-
-        urlParams.put("auth_token", Config.getInstance().getAuthToken());
-
-        DataManager.fetchUserInfo(urlParams, Config.getInstance().getUserID(), new UserInfoListener() {
-            @Override
-            public void onLoadCompleted(UserBean userBean) {
-                System.out.println("Successfull  : UserBean : " + userBean);
-                ScienceHubActivity.this.userBean = userBean;
-                populateUserInfo(userBean);
-                App.saveToken();
-
-            }
-
-            @Override
-            public void onLoadFailed(String errorMsg) {
-               /* Snackbar.make(coordinatorLayout, errorMsg, Snackbar.LENGTH_LONG)
-                        .setAction(R.string.btn_dismiss, snackBarDismissOnClickListener).show();*/
-
-            }
-        });
-
-    }
-
-    private void populateUserInfo(UserBean userBean) {
-
-        try {
-            Config.getInstance().setName(userBean.getName());
-            Config.getInstance().setProfilePhoto(userBean.getProfilePhoto());
-            Config.getInstance().setEmail(userBean.getEmail());
-            Config.getInstance().setAddHome(userBean.getAddHome());
-            Config.getInstance().setAddWork(userBean.getAddWork());
-            Config.getInstance().setHomeLatitude(userBean.getHomeLatitude());
-            Config.getInstance().setHomeLongitude(userBean.getHomeLongitude());
-            Config.getInstance().setWorkLatitude(userBean.getWorkLatitude());
-            Config.getInstance().setWorkLongitude(userBean.getWorkLongitude());
-            setUser();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    private void setUser() {
-        String username;
-        username = Config.getInstance().getName();
-    }
-
     private void resetViews(){
     feeds.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
     pubs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));

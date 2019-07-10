@@ -44,6 +44,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.util.HashMap;
 
@@ -57,6 +60,8 @@ import eg.mimocodes.sciencehub.model.UserBean;
 import eg.mimocodes.sciencehub.net.DataManager;
 import eg.mimocodes.sciencehub.util.AppConstants;
 
+import static eg.mimocodes.sciencehub.activity.LoginActivity.getDefaults;
+import static eg.mimocodes.sciencehub.activity.LoginActivity.setDefaults;
 import static eg.mimocodes.sciencehub.app.App.AUTH_TOKEN_NOT_AVAILABLE;
 import static eg.mimocodes.sciencehub.app.App.NETWORK_NOT_AVAILABLE;
 import static eg.mimocodes.sciencehub.app.App.SERVER_CONNECTION_AVAILABLE;
@@ -68,6 +73,7 @@ public class BaseAppCompatActivity extends BaseActivity {
     static final int HOME_ACTIVITY = 1;
 
     private static int CURRENT_ACTIVITY = 1;
+    private UserBean userBean;
 
 
     protected boolean isGetLocationEnabled = true;
@@ -104,7 +110,6 @@ public class BaseAppCompatActivity extends BaseActivity {
     private ImageView ivUserDP;
     private View lytProgress;
     private ProgressBar progressBase;
-    private UserBean userBean;
     private ImageView ivProfilePhoto;
     private TextView txtName;
     private TextView txtEmail;
@@ -325,17 +330,6 @@ public class BaseAppCompatActivity extends BaseActivity {
 
         super.onResume();
 
-        //if(Config.getInstance().getAuthToken()==null||Config.getInstance().getAuthToken().equals(""))
-//        leftDrawer.setCheckedItem(getSelectedNavigationDrawerItem(CURRENT_ACTIVITY));
-
-/*        if (!Config.getInstance().isLoggedIn() || Config.getInstance().getAuthToken() == null
-                || Config.getInstance().getAuthToken().equals("")) {
-            removeLoginDrawerFromNavigationView();
-            addLoginDrawerToNavigationView();
-        } else {
-            removeLoginDrawerFromNavigationView();
-        }*/
-
         if (Config.getInstance().getAuthToken() != null && !Config.getInstance().getAuthToken().equals("")) {
 //            if (getServerConnectionAvailableStatus(false) == SERVER_CONNECTION_AVAILABLE) {
             if (App.isNetworkAvailable()) {
@@ -345,52 +339,7 @@ public class BaseAppCompatActivity extends BaseActivity {
         }
     }
 
-    private void fetchUserInfo() {
 
-        HashMap<String, String> urlParams = new HashMap<>();
-
-        urlParams.put("auth_token", Config.getInstance().getAuthToken());
-
-        DataManager.fetchUserInfo(urlParams, Config.getInstance().getUserID(), new UserInfoListener() {
-            @Override
-            public void onLoadCompleted(UserBean userBean) {
-                System.out.println("Successfull  : UserBean : " + userBean);
-                BaseAppCompatActivity.this.userBean = userBean;
-
-
-                populateUserInfo(userBean);
-                App.saveToken();
-
-            }
-
-            @Override
-            public void onLoadFailed(String errorMsg) {
-               /* Snackbar.make(coordinatorLayout, errorMsg, Snackbar.LENGTH_LONG)
-                        .setAction(R.string.btn_dismiss, snackBarDismissOnClickListener).show();*/
-
-            }
-        });
-
-    }
-
-    private void populateUserInfo(UserBean userBean) {
-
-        try {
-            Config.getInstance().setName(userBean.getName());
-            Config.getInstance().setProfilePhoto(userBean.getProfilePhoto());
-            Config.getInstance().setEmail(userBean.getEmail());
-            Config.getInstance().setAddHome(userBean.getAddHome());
-            Config.getInstance().setAddWork(userBean.getAddWork());
-            Config.getInstance().setHomeLatitude(userBean.getHomeLatitude());
-            Config.getInstance().setHomeLongitude(userBean.getHomeLongitude());
-            Config.getInstance().setWorkLatitude(userBean.getWorkLatitude());
-            Config.getInstance().setWorkLongitude(userBean.getWorkLongitude());
-
-            setUser();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 
 
@@ -427,29 +376,6 @@ public class BaseAppCompatActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_base, menu);
-/*        menuProgress = menu.findItem(R.id.action_progress);
-        // Extract the action-view from the menu item
-        ProgressBar progressActionBar = (ProgressBar) MenuItemCompat.getActionView(menuProgress);
-        progressActionBar.setIndeterminate(true);*/
-        /*		menuNotiItem = menu.findItem(R.id.action_notifications);
-        MenuItemCompat.setActionView(menuNotiItem, R.layout.actionbar_notification_icon);
-		menuNoti = (View) MenuItemCompat.getActionView(menuNotiItem);
-		txtNoti = (TextView) menuNoti.findViewById(R.id.txt_action_notification);
-		 *//*		menuNoti.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-				//mVibrator.vibrate(25);
-				if(isNotificationVisible){
-					isNotificationVisible=false;
-					notificationDrawer.setVisibility(View.GONE);
-				}else{
-					isNotificationVisible=true;
-					notificationDrawer.setVisibility(View.VISIBLE);
-				}
-			}
-		});*/
         return true;
     }
 
@@ -464,8 +390,12 @@ public class BaseAppCompatActivity extends BaseActivity {
                     drawerLayout.closeDrawer(leftDrawer);
             /*			else if(drawerLayout.isDrawerOpen(rightDrawer))
                 drawerLayout.closeDrawer(rightDrawer);*/
-                else if (!drawerLayout.isDrawerOpen(leftDrawer))
+                else if (!drawerLayout.isDrawerOpen(leftDrawer)) {
+                    if (App.isNetworkAvailable()) {
+                        fetchUserInfo();
+                    }
                     drawerLayout.openDrawer(leftDrawer);
+                }
                 return true;
 /*            case R.id.action_search:
                 drawerLayout.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
@@ -487,18 +417,60 @@ public class BaseAppCompatActivity extends BaseActivity {
         ivProfilePhoto = (ImageView) lytDrawer.findViewById(R.id.iv_drawer_profile_photo);
         txtName = (TextView) lytDrawer.findViewById(R.id.txt_drawer_name);
         txtEmail = (TextView) lytDrawer.findViewById(R.id.txt_drawer_email);
-
-
-
-//        leftDrawer.addView(lytDrawer);
-
-/*        ivUserDP = (ImageView) lytDrawer.findViewById(R.id.iv_drawer_profile_photo);
-        txtName = (CustomTextView) lytDrawer.findViewById(R.id.txt_drawer_name);
-        txtPhone = (CustomTextView) lytDrawer.findViewById(R.id.txt_drawer_phone);
-        txtEmail = (CustomTextView) lytDrawer.findViewById(R.id.txt_drawer_email);*/
-
         leftDrawer.addView(lytDrawer);
 
+    }
+
+
+    private void fetchUserInfo() {
+        JSONObject postData = getUserInfoSObj();
+        HashMap<String, String> urlParams = new HashMap<>();
+
+        urlParams.put("auth_token", Config.getInstance().getAuthToken());
+
+        DataManager.fetchUserInfo(postData, new UserInfoListener() {
+            @Override
+            public void onLoadCompleted(UserBean userBean) {
+                System.out.println("Successfull  : UserBean : " + userBean);
+                BaseAppCompatActivity.this.userBean = userBean;
+                populateUserInfo(userBean);
+                App.saveToken();
+            }
+
+            @Override
+            public void onLoadFailed(String errorMsg) {
+               /* Snackbar.make(coordinatorLayout, errorMsg, Snackbar.LENGTH_LONG)
+                        .setAction(R.string.btn_dismiss, snackBarDismissOnClickListener).show();*/
+
+            }
+        });
+
+    }
+
+    private void populateUserInfo(UserBean userBean) {
+
+        setDefaults("ProfilePhoto", userBean.getProfilePhoto(), getBaseContext());
+        setDefaults("DisplayName", userBean.getName(), getBaseContext());
+        setDefaults("WorkPosition", userBean.getWorkPosition(), getBaseContext());
+        setDefaults("UserEmail", userBean.getEmail(), getBaseContext());
+        setUser();
+
+    }
+
+    private JSONObject getUserInfoSObj() {
+
+        JSONObject postData = new JSONObject();
+
+        try {
+
+            postData.put("user_id", getDefaults("UserID", getBaseContext()));
+            postData.put("auth_token", R.string.api_key);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return postData;
     }
 
 
@@ -956,8 +928,8 @@ public class BaseAppCompatActivity extends BaseActivity {
     public void onLogoutClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         drawerLayout.closeDrawers();
-        LoginActivity.setDefaults("IsLoggedIn", "0", getBaseContext());
-        LoginActivity.setDefaults("AppLoggingOut", "1", getBaseContext());
+        setDefaults("IsLoggedIn", "0", getBaseContext());
+        setDefaults("AppLoggingOut", "1", getBaseContext());
         ScienceHubActivity.webloadUrl("https://sciencehub.eg/logout");
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

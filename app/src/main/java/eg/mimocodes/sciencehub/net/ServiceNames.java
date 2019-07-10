@@ -20,7 +20,7 @@ public class ServiceNames {
     public static final String USER_LOGIN = API + "do_login.php?credentials=";
     public static final String NEW_PASSWORD = API + "do_login.php?recover=";
     public static final String UPDATE_FCM_TOKEN = API + "/save_fcmtoken?";
-    public static final String USER_INFO = API + "/user_details?";
+    public static final String USER_INFO = API + "do_login.php?userinfo=";
 
 
 

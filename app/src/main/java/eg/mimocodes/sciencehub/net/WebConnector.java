@@ -95,7 +95,7 @@ public class WebConnector {
         InputStream inputStream = null;
         HttpURLConnection urlConnection = null;
         try {
-            System.out.println(">>>>>>>>>url : " + url);
+            System.out.println(">>>>===>>>>>url : " + url + postData.toString());
                 /* forming th java.net.URL object */
             urlConnection = (HttpURLConnection) new URL(url.toString() + postData.toString()).openConnection();
             urlConnection.setRequestProperty("User-Agent", "Mozilla/5.0 ( compatible ) ");

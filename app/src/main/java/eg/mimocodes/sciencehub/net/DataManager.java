@@ -136,9 +136,9 @@ public class DataManager {
 
 
 
-    public static void fetchUserInfo(HashMap<String, String> urlParams, String userID, final UserInfoListener listener) {
+    public static void fetchUserInfo(JSONObject postData, final UserInfoListener listener) {
 
-        UserInfoTask userInfoTask = new UserInfoTask(urlParams);
+        UserInfoTask userInfoTask = new UserInfoTask(postData);
         userInfoTask.setUserInfoTaskListener(new UserInfoTask.UserInfoTaskListener() {
             @Override
             public void dataDownloadedSuccessfully(UserBean userBean) {
