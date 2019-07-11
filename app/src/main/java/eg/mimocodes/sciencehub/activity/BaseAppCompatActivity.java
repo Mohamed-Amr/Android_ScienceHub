@@ -27,14 +27,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import android.content.SharedPreferences;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -51,7 +49,6 @@ import java.io.File;
 import java.util.HashMap;
 
 import eg.mimocodes.sciencehub.R;
-import eg.mimocodes.sciencehub.advancedwebview.AdvancedWebView;
 import eg.mimocodes.sciencehub.app.App;
 import eg.mimocodes.sciencehub.config.Config;
 import eg.mimocodes.sciencehub.listeners.PermissionListener;
@@ -87,13 +84,9 @@ public class BaseAppCompatActivity extends BaseActivity {
 
 
     FrameLayout lytContent;
-    //protected FrameLayout leftDrawer;
     NavigationView leftDrawer;
-    //	protected FrameLayout rightDrawer;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle mDrawerToggle;
-    //protected  RelativeLayout lytContents;
-    protected View lytActivity;
 
     final Handler mHandler = new Handler();
 
@@ -102,43 +95,17 @@ public class BaseAppCompatActivity extends BaseActivity {
     protected CoordinatorLayout coordinatorLayout;
     protected Toolbar toolbar;
 
-    private MenuItem menuProgress;
     private View lytDrawer;
-    private EditText etxtEmail;
-    private EditText etxtPassword;
-    private View lytDrawerHeader;
-    private ImageView ivUserDP;
     private View lytProgress;
     private ProgressBar progressBase;
     private ImageView ivProfilePhoto;
     private TextView txtName;
+    private TextView txtPosition;
     private TextView txtEmail;
-    private String txtUserID;
     private View lytMessage;
     private TextView txtMessage;
-    public static final String ScienceHubpreference = "ShPref";
-    SharedPreferences sharedpreferences ;
-    //public static final String ScienceHubpreference = "ShPref";
-    /*public static final String UserName = "nameKey";
-    public static final String UserPass = "PassKey";
-    public static final String ProfilePhoto = "ProfilePhoto";
-    public static final String DisplayName = "DisplayName";
-    public static final String WorkPosition = "WorkPosition";
-    public static final String UserID = "IDKey";
-    public static final String UserEmail = "UserEmail";*/
 
 
-
-    /*	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //  setContentView(R.layout.layout_base);
-
-        getActionBar().setDisplayShowHomeEnabled(false);
-            getActionBar().setDisplayShowTitleEnabled(false);
-
-    }
-     */
     private void initViewBase() {
 
         initBase();
@@ -162,15 +129,12 @@ public class BaseAppCompatActivity extends BaseActivity {
         addPermissionListener(permissionListener);
 
 //        }
-//        FacebookSdk.sdkInitialize(this.getApplicationContext());
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
-        //leftDrawer = (FrameLayout) findViewById(R.id.leftDrawer);
         leftDrawer = (NavigationView) findViewById(R.id.navigation_view_base_appcompat);
-        //	rightDrawer = (FrameLayout)findViewById(R.id.rightDrawer);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_appcompat);
         lytContent = (FrameLayout) findViewById(R.id.lyt_contents_appcompat);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorlayout_base_appcompat);
@@ -297,11 +261,6 @@ public class BaseAppCompatActivity extends BaseActivity {
         }
     }
 
-/*    @Override
-    protected void onRestart() {
-//        getWindow().setBackgroundDrawableResource(getWindowBackgroudResourse());
-        super.onRestart();
-    }*/
 
 
     @Override
@@ -344,12 +303,15 @@ public class BaseAppCompatActivity extends BaseActivity {
 
 
     private void setUser() {
-
-
-        //sharedpreferences = getSharedPreferences(ScienceHubpreference,Context.MODE_PRIVATE);
-
-
         txtName.setText(LoginActivity.getDefaults("DisplayName", getBaseContext()));
+        if(LoginActivity.getDefaults("WorkPosition", getBaseContext()).length() >= 2) {
+            txtPosition.setVisibility(View.VISIBLE);
+            txtPosition.setText(LoginActivity.getDefaults("WorkPosition", getBaseContext()));
+        }
+        else
+        {
+            txtPosition.setVisibility(View.GONE);
+        }
         txtEmail.setText(LoginActivity.getDefaults("UserEmail", getBaseContext()));
         String profile_image_path = LoginActivity.getDefaults("ProfilePhoto",getBaseContext());
         Glide.with(getApplicationContext())
@@ -416,6 +378,7 @@ public class BaseAppCompatActivity extends BaseActivity {
 
         ivProfilePhoto = (ImageView) lytDrawer.findViewById(R.id.iv_drawer_profile_photo);
         txtName = (TextView) lytDrawer.findViewById(R.id.txt_drawer_name);
+        txtPosition = (TextView) lytDrawer.findViewById(R.id.txt_drawer_position);
         txtEmail = (TextView) lytDrawer.findViewById(R.id.txt_drawer_email);
         leftDrawer.addView(lytDrawer);
 

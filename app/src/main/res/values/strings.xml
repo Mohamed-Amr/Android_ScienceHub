@@ -8,6 +8,7 @@
     <string name="action_sign_out">Sign Out</string>
     <string name="back_to_login">Already a Member?</string>
     <string name="search">Search</string>
+    <string name="work_psition">Position</string>
 
     <string name="btn_add_code">Add Code</string>
     <string name="btn_add_home">Add Home</string>

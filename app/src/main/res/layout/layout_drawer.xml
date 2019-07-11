@@ -29,7 +29,7 @@
                     android:id="@+id/iv_drawer_profile_photo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/avatar_2"/>
+                    android:src="@drawable/avatar_2" />
 
                 <ImageView
                     android:contentDescription="@string/account_profile_photo"
@@ -60,6 +60,16 @@
                     android:gravity="center"
                     android:textSize="18sp"
                     />
+                <eg.mimocodes.sciencehub.widgets.CustomTextView
+                    android:id="@+id/txt_drawer_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:hint="@string/work_psition"
+                    android:textColor="@color/white"
+                    android:textColorHint="#b1bcbf"
+                    android:textSize="12sp"/>
 
                 <eg.mimocodes.sciencehub.widgets.CustomTextView
                     android:id="@+id/txt_drawer_email"

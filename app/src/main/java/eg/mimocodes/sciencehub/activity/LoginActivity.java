@@ -39,16 +39,6 @@ public class LoginActivity extends BaseAppCompatNoDrawerActivity {
     private String TAG = " ";
     private String ful_phone_regix = "^[+]?[0-9]{13,13}$";
     private String phone_regix = "^[0-9]{11,11}$";
-
-    SharedPreferences sharedpreferences;
-    public static final String ScienceHubpreference = "ShPref";
-    public static final String UserName = "nameKey";
-    public static final String UserPass = "PassKey";
-    public static final String ProfilePhoto = "ProfilePhoto";
-    public static final String DisplayName = "DisplayName";
-    public static final String WorkPosition = "WorkPosition";
-    public static final String UserID = "IDKey";
-    public static final String UserEmail = "UserEmail";
     public String deviceid="";
 
     @Override

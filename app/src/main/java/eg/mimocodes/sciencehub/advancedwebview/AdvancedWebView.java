@@ -646,10 +646,12 @@ public class AdvancedWebView extends WebView {
 
 				if (mListener != null) {
 					mListener.onPageError(errorCode, description, failingUrl);
+					view.loadUrl("file:///android_asset/offline.html");
 				}
 
 				if (mCustomWebViewClient != null) {
 					mCustomWebViewClient.onReceivedError(view, errorCode, description, failingUrl);
+					view.loadUrl("file:///android_asset/offline.html");
 				}
 			}
 

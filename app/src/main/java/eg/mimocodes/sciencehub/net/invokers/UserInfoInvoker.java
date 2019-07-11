@@ -4,9 +4,12 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import eg.mimocodes.sciencehub.model.AuthBean;
 import eg.mimocodes.sciencehub.model.UserBean;
 import eg.mimocodes.sciencehub.net.ServiceNames;
 import eg.mimocodes.sciencehub.net.WebConnector;
+import eg.mimocodes.sciencehub.net.parsers.LoginParser;
+import eg.mimocodes.sciencehub.net.parsers.UserInfoParser;
 import eg.mimocodes.sciencehub.net.utils.WSConstants;
 
 public class UserInfoInvoker extends BaseInvoker {
@@ -31,11 +34,11 @@ public class UserInfoInvoker extends BaseInvoker {
         System.out.println(">>>>>>>>>>> response: " + wsResponseString);
         UserBean userBean = null;
         if (wsResponseString.equals("")) {
-            /*registerBean=new RegisterBean();
-			registerBean.setWebError(true);*/
             return userBean = null;
         } else {
             userBean = new UserBean();
+            UserInfoParser userinfoParser = new UserInfoParser();
+            userBean = userinfoParser.parseUserInfoResponse(wsResponseString);
             return userBean;
         }
     }
