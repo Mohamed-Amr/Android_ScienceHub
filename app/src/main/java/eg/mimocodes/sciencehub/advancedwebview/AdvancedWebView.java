@@ -637,6 +637,12 @@ public class AdvancedWebView extends WebView {
 					public void onReceiveValue(String s) {
 					}
 				});
+
+				view.evaluateJavascript("document.body.scrollTop = document.documentElement.scrollTop = 0;", new android.webkit.ValueCallback<String>() {
+					@Override
+					public void onReceiveValue(String s) {
+					}
+				});
 			}
 
 
