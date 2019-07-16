@@ -169,23 +169,12 @@ public class LoginActivity extends BaseAppCompatNoDrawerActivity {
 
     private JSONObject getLoginJSObj() {
         JSONObject postData = new JSONObject();
+        //JSONObject innerData = new JSONObject();
+
         String email="";
 
         OSPermissionSubscriptionState status = OneSignal.getPermissionSubscriptionState();
         deviceid = status.getSubscriptionStatus().getUserId();
-
-        // Get OneSignal Device Id
-       /* OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
-            @Override
-            public void idsAvailable(String userId, String registrationId) {
-                Log.d("debug", "User:" + userId);
-                if (registrationId != null)
-                    Log.d("debug", "registrationId:" + registrationId);
-                deviceid = registrationId;
-
-            }
-        });*/
-
 
         if (!etxtUserName.getText().toString().equals("")) {
             if (etxtUserName.getText().toString().matches(ful_phone_regix)) {
@@ -198,10 +187,10 @@ public class LoginActivity extends BaseAppCompatNoDrawerActivity {
         }
 
         try {
+            postData.put("credentials", "");
             postData.put("username", email);
             postData.put("password", etxtPassword.getText().toString());
             postData.put("device_id", deviceid);
-
         } catch (JSONException e) {
             e.printStackTrace();
         }

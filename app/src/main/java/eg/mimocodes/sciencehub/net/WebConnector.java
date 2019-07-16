@@ -97,7 +97,7 @@ public class WebConnector {
         try {
             System.out.println(">>>>===>>>>>url : " + url + postData.toString());
                 /* forming th java.net.URL object */
-            urlConnection = (HttpURLConnection) new URL(url.toString() + postData.toString()).openConnection();
+            urlConnection = (HttpURLConnection) new URL(url.toString()).openConnection();
             urlConnection.setRequestProperty("User-Agent", "Mozilla/5.0 ( compatible ) ");
 //            urlConnection.setRequestProperty("User-Agent", AppConstants.USER_AGENT_CCAVENUE);
             urlConnection.setRequestProperty("Content-Type", "application/json");
@@ -109,7 +109,7 @@ public class WebConnector {
             urlConnection.setReadTimeout(60000);
             urlConnection.setDoOutput(true);
             urlConnection.setDoInput(true);
-            urlConnection.setRequestMethod("GET");
+            urlConnection.setRequestMethod("POST");
             OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
             String encodedString = new String(postData.toString().getBytes("UTF-8"), "UTF-8");
             Log.i(TAG, "connectToPOST_service: encoded String : ");

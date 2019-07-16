@@ -425,7 +425,7 @@ public class BaseAppCompatActivity extends BaseActivity {
         JSONObject postData = new JSONObject();
 
         try {
-
+            postData.put("userinfo", "");
             postData.put("user_id", getDefaults("UserID", getBaseContext()));
             postData.put("auth_token", R.string.api_key);
 

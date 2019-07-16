@@ -17,10 +17,10 @@ public class ServiceNames {
     /*Set API URL here*/
     private static final String API = PRODUCTION_API + API_VERSION;
     public static final String API_UPLOADS = PRODUCTION_API + PATH_UPLOADS;
-    public static final String USER_LOGIN = API + "do_login.php?credentials=";
-    public static final String NEW_PASSWORD = API + "do_login.php?recover=";
+    public static final String USER_LOGIN = API + "do_login.php?";
+    public static final String NEW_PASSWORD = API + "do_login.php?";
     public static final String UPDATE_FCM_TOKEN = API + "/save_fcmtoken?";
-    public static final String USER_INFO = API + "do_login.php?userinfo=";
+    public static final String USER_INFO = API + "do_login.php?";
 
 
 

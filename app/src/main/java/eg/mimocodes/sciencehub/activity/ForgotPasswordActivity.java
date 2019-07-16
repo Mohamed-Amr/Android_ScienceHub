@@ -96,7 +96,7 @@ public class ForgotPasswordActivity extends BaseAppCompatNoDrawerActivity {
         JSONObject postData = new JSONObject();
 
         try {
-
+            postData.put("recover", "");
             postData.put("recover_email", etxtEmail.getText().toString());
             postData.put("auth_token", R.string.api_key);
 
